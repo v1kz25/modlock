@@ -2,13 +2,32 @@
 
 ## Estado
 
-No se ha creado código ni hay comandos específicos de compilación verificados. No inventar instrucciones de ejecución hasta completar el spike/setup.
+Setup del issue #3: paquete instalable localmente, CLI Typer de ayuda/versión y pruebas. No hay lector, comparación ni auditorías. El veredicto histórico CONTRIBUIR de #1 permanece; el propietario decidió después investigar una herramienta independiente complementaria y autorizó solo este setup, sin afirmar demanda ni comprometer el backlog.
 
-## Entorno propuesto
+## Entorno comprobado y elección de versiones
 
-- Windows 11; Git, GitHub CLI (`gh`), Codex en desktop/VS Code/CLI.
-- Stack en evaluación: Python + Typer (verificar licencia de dependencias y versión de Python).
+- Windows 11 x64 (ensayado en 10.0.26300.0); Git y GitHub CLI (`gh`).
+- Perfil experimental admitido: **CPython >=3.12,<3.13**. Se limita a una familia comprobada, sin prometer compatibilidad con otras familias/plataformas. Python 3.12 sigue en soporte de seguridad hasta octubre de 2028 según la [guía oficial](https://devguide.python.org/versions/); la [documentación de Windows](https://docs.python.org/3.12/using/windows.html) incluye plataformas posteriores a Windows 8.1.
+- La selección se contrastó con requisitos de dependencias y wheels Windows, instalación aislada y tests; no se dedujo simplemente del spike. El intérprete disponible usado fue **3.12.14**, que no se impone como parche mínimo ni se presenta como el más reciente. Usar un parche de seguridad mantenido de la familia; no se han probado todos los parches. Ampliar el rango requiere otra verificación.
+- Typer 0.29.2 (runtime), pytest 9.2.0 (pruebas), Ruff 0.17.6 (lint/formato) y flit_core 4.2.0 (backend de instalación sin dependencias externas). Son versiones estables consultadas en PyPI y comprobadas en este entorno; no una selección anticipada para una release.
+- [requirements-dev.txt](../requirements-dev.txt) fija también las dependencias transitivas y hashes de las wheels ensayadas para CPython 3.12/Windows x64. No es un lock multiplataforma. [DEPENDENCIES.md](DEPENDENCIES.md) registra necesidad, licencias y componentes incluidos.
 - Sin hosting, cuentas de servicios comerciales, API keys ni infraestructura de pago.
+
+## Instalación local en PowerShell
+
+Desde la raíz del repositorio, definir `$python` como ruta absoluta de un **python.exe CPython 3.12 existente** y comprobar `& $python --version`. En la verificación se usó el ejecutable ya incluido en el runtime de Codex. No usar un alias que instale Python automáticamente ni cambiar PATH, políticas de ejecución o configuración de Windows.
+
+```powershell
+& $python -m venv .venv
+& .\.venv\Scripts\python.exe -m pip --isolated download --only-binary=:all: --require-hashes -r requirements-dev.txt --dest .venv/wheels
+& .\.venv\Scripts\python.exe -m pip --isolated install --no-index --find-links .venv/wheels --only-binary=:all: --require-hashes -r requirements-dev.txt
+& .\.venv\Scripts\python.exe -m pip --isolated install --no-build-isolation --no-deps -e .
+& .\.venv\Scripts\python.exe -m pip check
+```
+
+Comprobar `$LASTEXITCODE` después de cada comando y detenerse si no es 0. La descarga inicial usa PyPI; la instalación desde wheels, la CLI y las pruebas son locales. No se necesita activar el entorno. `.venv/` ya está ignorado por Git. La instalación editable usa el backend fijado del entorno, sin resolver dependencias ocultas en un entorno de build adicional. No se ha instalado nada globalmente ni se distribuyen intérpretes/binaries en el repositorio.
+
+Se repitió la instalación desde cero en `.venv/clean`, entorno independiente creado para comprobación dentro de la carpeta ignorada: mismo requirements con hashes, instalación editable, `pip check`, pytest y Ruff correctos. Las wheels `pydantic_core` y Ruff para Windows x64 evitaron necesitar compiladores o cambios de Windows. No se probó instalación desde sdist ni generación de un ejecutable distribuible.
 
 ## Flujo de trabajo
 
@@ -19,9 +38,40 @@ No se ha creado código ni hay comandos específicos de compilación verificados
 5. Proponer Pull Request; no fusionarla sin permiso.
 6. Actualizar el README únicamente para funciones realmente disponibles.
 
-## Tests y comandos
+## Tests, lint y smoke
 
-Pendiente del issue de inicialización. No se supone instalado ningún SDK ni versión concreta.
+```powershell
+& .\.venv\Scripts\python.exe -m pytest -q
+& .\.venv\Scripts\python.exe -m ruff check src tests
+& .\.venv\Scripts\python.exe -m ruff format --check src tests
+& .\.venv\Scripts\modlock.exe --help
+& .\.venv\Scripts\modlock.exe --version
+& .\.venv\Scripts\python.exe -m modlock --version
+& .\.venv\Scripts\modlock.exe --unknown-option
+# Este último debe terminar con $LASTEXITCODE = 2.
+```
+
+La CLI no tiene subcomandos de producto. Sin argumentos muestra ayuda y sale con 0; `--help` y `--version` salen con 0; opciones/argumentos inválidos salen con 2 y diagnóstico sin traceback. Versión de desarrollo: `0.0.0.dev0`, única fuente en `src/modlock/__init__.py` y metadata calculada por flit. No se añaden comandos simulados de comparación.
+
+Resultados ejecutados el **22-11-2026**:
+
+| Verificación | Resultado |
+|---|---|
+| Instalación aislada con hashes e instalación editable | OK en `.venv` y en entorno vacío `.venv/clean` |
+| pytest: ayuda explícita/sin argumentos, versión/metadata, cuatro usos inválidos y entrada `python -m` fuera del repositorio | 8 tests OK en ambos entornos |
+| Ruff `check src tests` | OK en ambos entornos |
+| Ruff `format --check src tests` | 4 archivos ya formateados |
+| `pip check` | Sin requisitos rotos en ambos entornos |
+| Smoke de `modlock.exe` fuera del repositorio | Ayuda/sin argumentos/versión: 0; opción desconocida y compare: 2 |
+| Licencias y versiones instaladas | 19 distribuciones fijadas contrastadas; bootstrap documentado por separado |
+
+La primera ejecución de tests detectó una aserción frágil por el salto de línea de la ayuda en terminal estrecha; se corrigió normalizando espacios en esa aserción y la suite final pasó completa. No se alteró la CLI para acomodar una salida falsa. El lint se limita al paquete y sus tests; no convierte scripts históricos de investigación en código del producto. No se configura CI ni publicación.
+
+No hay prueba manual obligatoria de usuario para este setup: los comandos y el smoke ya se ejecutaron. Los comandos anteriores permiten revisarlo sin datos de mods. La GUI MO2, parser y auditorías siguen fuera del alcance.
+
+## Siguiente dependencia, sin autorización automática
+
+Tras revisar e integrar #3, el siguiente issue técnico sería **#6** (lector del formato #2), antes de #7 y #4. Su texto conserva una condición de no comenzar con CONTRIBUIR: el propietario deberá autorizar y aclarar expresamente ese alcance antes de iniciarlo. La decisión actual solo autoriza #3; no resuelve por sí sola la puerta del lector. No se inicia #4 por su número menor.
 
 ## Gitflow
 

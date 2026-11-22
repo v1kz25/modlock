@@ -1,8 +1,8 @@
 # modlock
 
-> Estado: planificación inicial. **Aún no hay MVP implementado**.
+> Estado: inicialización experimental. **Aún no hay MVP implementado**.
 
-El [spike del issue #1](docs/research/issue-1/REPORT.md), integrado mediante la PR #21, propone **CONTRIBUIR** a Meteoric. El propietario autorizó después el [estudio del formato del issue #2](docs/formats/meteoric-json-v1.md) como investigación limitada. Esa autorización no cambia el veredicto ni habilita CLI, parser o MVP; las versiones propuestas siguen condicionadas a decisiones posteriores.
+El [spike del issue #1](docs/research/issue-1/REPORT.md) conserva el veredicto histórico **CONTRIBUIR**. Tras #2, el propietario decidió seguir investigando modlock como auditor independiente y complementario a Meteoric, y autorizó **solo #3: setup Python/Typer y pruebas**. Es una decisión del propietario; no demuestra demanda ni valida el backlog. Las versiones propuestas siguen condicionadas a decisiones posteriores.
 
 Auditoría read-only de modlists: diferencias semánticas y riesgos de reproducibilidad.
 
@@ -10,9 +10,18 @@ Auditoría read-only de modlists: diferencias semánticas y riesgos de reproduci
 
 Comparar exportaciones existentes de listas de mods, preservando incertidumbre en coincidencias y generando reportes reproducibles.
 
-## Stack provisional
+## Disponible ahora
 
-Python + Typer (verificar licencia de dependencias y versión de Python). La versión concreta y la idoneidad se validarán en el primer spike técnico.
+CLI de desarrollo con ayuda y versión `0.0.0.dev0`; sin comandos de lectura, comparación o auditoría. Base inicial comprobada: CPython 3.12, Windows 11 x64 y Typer 0.29.2.
+
+Después de la [instalación local](docs/DEVELOPMENT.md):
+
+```powershell
+& .\.venv\Scripts\modlock.exe --help
+& .\.venv\Scripts\modlock.exe --version
+```
+
+Sin argumentos muestra ayuda (código 0); ayuda y versión terminan con 0. Argumentos/opciones no disponibles terminan con 2. No se leen exportaciones. Versiones y licencias directas/transitivas: [DEPENDENCIES.md](docs/DEPENDENCIES.md).
 
 ## MVP previsto
 
