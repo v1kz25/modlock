@@ -1,6 +1,6 @@
-# Dependencias del setup #3
+# Dependencias y licencias — setup #3 / distribución #10
 
-Revisión: **22-11-2026**, Windows 11 x64 / CPython 3.12.14. La licencia propia de modlock sigue pendiente: no se añade LICENSE ni se elige una licencia del producto.
+Revisión: **22-11-2026**, Windows 11 x64 / CPython 3.12.14. El propietario eligió expresamente MIT para modlock en #10. LICENSE y THIRD_PARTY_NOTICES.md se incluyen en wheel y sdist. No se redistribuyen wheels ajenas ni intérprete; las dependencias conservan sus avisos upstream.
 
 ## Necesidad y compatibilidad
 
@@ -57,4 +57,4 @@ Las declaraciones se consultaron en `https://pypi.org/pypi/<nombre>/<versión>/j
 
 La revisión cubre el grafo Python resuelto, sus textos de licencia y avisos incluidos identificados, más las declaraciones del bootstrap. Las licencias revisadas permiten uso local sin cuota obligatoria; conservar copyright, licencias y avisos cuando corresponda redistribuir. No se incorpora Meteoric/GPL como dependencia ni se copia código suyo.
 
-No se audita el árbol de compilación Rust/C de cada binario upstream ni se prepara redistribución de intérprete o ejecutable. Un empaquetado distribuible requeriría revisar sus componentes y avisos concretos. No se publica un paquete sin decidir la licencia propia. No se certifican otras plataformas/familias de Python. Al cambiar dependencias, revisar de nuevo licencias y hashes y repetir instalación, tests, lint y smoke.
+No se audita el árbol de compilación Rust/C de cada binario upstream ni se prepara redistribución de intérprete o ejecutable. Un empaquetado distribuible requeriría revisar sus componentes y avisos concretos. La selección MIT satisface la decisión pendiente de licencia propia; no cambia las licencias upstream. requirements-runtime.txt contiene solo las 13 distribuciones de runtime del mismo grafo/hashes ya revisados; requirements-dev.txt conserva las 19. No se certifican otras plataformas/familias de Python. Al cambiar dependencias, revisar de nuevo licencias y hashes y repetir instalación, tests, lint y smoke.

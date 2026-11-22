@@ -1,6 +1,6 @@
 # modlock
 
-> Estado: inicialización experimental. **Aún no hay MVP implementado**.
+> Estado: **0.1.0a1 experimental**, primera comparación limitada; contrato todavía inestable.
 
 El [spike del issue #1](docs/research/issue-1/REPORT.md) conserva el veredicto histórico **CONTRIBUIR**. El propietario decidió después seguir investigando modlock como auditor independiente y complementario a Meteoric. Tras integrar #7 autorizó completar **#4, #8, #9 y #10 y publicar v0.1.0 experimental**, con fusiones secuenciales y aviso si hace falta prueba manual. Es una decisión del propietario; no demuestra demanda ni valida el backlog. Las versiones propuestas siguen condicionadas a decisiones posteriores.
 
@@ -54,6 +54,6 @@ Los algoritmos de identificación fuzzy pueden confundir mods; ecosistemas y for
 
 ## Licencia
 
-**Pendiente de decisión.** Este repositorio se publica sin archivo LICENSE por ahora. Ser público en GitHub no otorga automáticamente permiso para copiar, modificar o redistribuir su contenido.
+MIT, elegida expresamente por el propietario para #10: [LICENSE](LICENSE). Dependencias y avisos: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Instalación del paquete y verificación de artefactos: [RELEASE.md](docs/RELEASE.md). No se redistribuyen intérprete ni dependencias dentro de la wheel.
 
 Motor interno: [comparación conservadora](docs/COMPARISON.md), con contexto explícito y referencias exactas; sin heurística por nombre ni inferencia de actualizaciones por página.

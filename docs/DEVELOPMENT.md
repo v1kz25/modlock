@@ -4,7 +4,7 @@
 
 #4 integrado; #8 incorpora CLI compare e informes JSON/Markdown. [Comandos y códigos actuales](CLI.md). Las secciones del setup registran sus verificaciones históricas; la suite actual se verifica en cada PR. La autorización vigente cubre #4/#8/#9/#10 y publicación experimental, sin habilitar v0.2.
 
-Setup #3 y lector #6 integrados; modelo interno #7 preparado para revisión. `read_meteoric` lee y `normalize_export` conserva los registros y anota evidencia de identidad e incertidumbre local. No hay matching, comparación ni auditorías; la CLI mantiene solo ayuda/versión. La instrucción del propietario de continuar con la siguiente tarea autoriza #7, pese a la condición histórica de diferenciación. CONTRIBUIR permanece como veredicto del spike; la decisión del propietario no demuestra demanda ni autoriza tareas posteriores.
+Estado actual: #3/#6/#7/#4/#8/#9 integrados. Lector, identidad, motor conservador, CLI e informes disponibles; #10 prepara distribución 0.1.0a1 con MIT autorizada. La evidencia histórica de #3 se mantiene abajo identificada como tal. CONTRIBUIR permanece como veredicto del spike. [Instalación del artefacto y reproducción](RELEASE.md).
 
 ## Entorno comprobado y elección de versiones
 
@@ -71,9 +71,9 @@ La primera ejecución de tests detectó una aserción frágil por el salto de l�
 
 La tabla anterior registra el setup #3. La validación del lector #6 se describe en el [contrato del lector](formats/meteoric-json-v1.md#lector-interno-del-issue-6); reglas, golden y comandos del modelo #7 en [IDENTITY.md](IDENTITY.md). La normalización no hace I/O: recibe un resultado del lector y conserva copias separadas de sus datos. No hay prueba manual obligatoria de usuario: el agente ejecuta comandos y smoke sintéticos. La GUI MO2 y auditorías siguen fuera del alcance.
 
-## Siguiente dependencia, sin autorización automática
+## Después de v0.1, sin autorización automática
 
-Tras revisar e integrar #7, el siguiente issue técnico sería **#4** (motor de comparación sobre el modelo). Requiere nueva autorización y decisiones sobre el contexto de las referencias; este formato no proporciona juego ni hashes. El #7 no ofrece correspondencias entre exports ni fusiona duplicados. No se inicia #4, CLI de comparación ni informes en esta tarea.
+Terminar #10 y publicar la prerelease autorizada agota este alcance. No iniciar v0.2. La siguiente dependencia propuesta es #11, condicionada a revisar necesidad, feedback y autorización del propietario.
 
 ## Gitflow
 
