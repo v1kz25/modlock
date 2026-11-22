@@ -2,6 +2,8 @@
 
 ## Estado
 
+#4 integrado; #8 incorpora CLI compare e informes JSON/Markdown. [Comandos y códigos actuales](CLI.md). Las secciones del setup registran sus verificaciones históricas; la suite actual se verifica en cada PR. La autorización vigente cubre #4/#8/#9/#10 y publicación experimental, sin habilitar v0.2.
+
 Setup #3 y lector #6 integrados; modelo interno #7 preparado para revisión. `read_meteoric` lee y `normalize_export` conserva los registros y anota evidencia de identidad e incertidumbre local. No hay matching, comparación ni auditorías; la CLI mantiene solo ayuda/versión. La instrucción del propietario de continuar con la siguiente tarea autoriza #7, pese a la condición histórica de diferenciación. CONTRIBUIR permanece como veredicto del spike; la decisión del propietario no demuestra demanda ni autoriza tareas posteriores.
 
 ## Entorno comprobado y elección de versiones
@@ -51,7 +53,7 @@ Se repitió la instalación desde cero en `.venv/clean`, entorno independiente c
 # Este último debe terminar con $LASTEXITCODE = 2.
 ```
 
-La CLI no tiene subcomandos de producto. Sin argumentos muestra ayuda y sale con 0; `--help` y `--version` salen con 0; opciones/argumentos inválidos salen con 2 y diagnóstico sin traceback. Versión de desarrollo: `0.0.0.dev0`, única fuente en `src/modlock/__init__.py` y metadata calculada por flit. No se añaden comandos simulados de comparación.
+Estado histórico del setup #3 (la CLI actual añade compare): Sin argumentos muestra ayuda y sale con 0; `--help` y `--version` salen con 0; opciones/argumentos inválidos salen con 2 y diagnóstico sin traceback. Versión de desarrollo: `0.0.0.dev0`, única fuente en `src/modlock/__init__.py` y metadata calculada por flit. No se añaden comandos simulados de comparación.
 
 Resultados ejecutados el **22-11-2026**:
 

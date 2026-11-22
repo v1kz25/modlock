@@ -12,20 +12,14 @@ Comparar exportaciones existentes de listas de mods, preservando incertidumbre e
 
 ## Disponible ahora
 
-CLI de desarrollo con ayuda y versión `0.0.0.dev0`; sin comandos de lectura, comparación o auditoría. Base inicial comprobada: CPython 3.12, Windows 11 x64 y Typer 0.29.2.
-
-API interna `modlock.meteoric.read_meteoric`: lectura tipada del [formato Meteoric estudiado](docs/formats/meteoric-json-v1.md), con errores de estructura y advertencias por metadatos incompletos. Conserva orden, registros y campos originales sin decidir identidad. Todavía no está conectada a la CLI.
-
-API interna `modlock.identity.normalize_export`: [modelo de referencias e incertidumbre](docs/IDENTITY.md) que conserva todos los registros, marca faltantes y colisiones dentro de un export y no inventa correspondencias entre listas. Una referencia completa local no demuestra identidad global ni igualdad de instalación.
-
-Después de la [instalación local](docs/DEVELOPMENT.md):
+CLI experimental de comparación read-only: [uso, contexto y límites](docs/CLI.md). JSON y Markdown deterministas, sin sobrescribir archivos existentes. Base comprobada: CPython 3.12 / Windows 11 x64.
 
 ```powershell
 & .\.venv\Scripts\modlock.exe --help
-& .\.venv\Scripts\modlock.exe --version
+& .\.venv\Scripts\modlock.exe compare BASE.json HEAD.json --context JUEGO:LINAJE
 ```
 
-Sin argumentos muestra ayuda (código 0); ayuda y versión terminan con 0. Argumentos/opciones no disponibles terminan con 2. La CLI aún no lee exportaciones. Versiones y licencias directas/transitivas: [DEPENDENCIES.md](docs/DEPENDENCIES.md); no se añaden dependencias para el lector.
+Solo declarar contexto cuando ambos exports comparten juego y linaje conocidos; sin contexto los mods quedan ambiguos. IDs de archivo cambiados no se emparejan por suponer actualización. APIs internas: lector Meteoric, modelo de identidad y motor conservador. No se verifica contenido instalado, hashes o compatibilidad. Instalación: [DEVELOPMENT.md](docs/DEVELOPMENT.md); licencias/dependencias: [DEPENDENCIES.md](docs/DEPENDENCIES.md).
 
 ## MVP previsto
 

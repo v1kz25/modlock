@@ -1,0 +1,13 @@
+{
+  "schema": "modlock-0.1-experimental",
+  "context": null,
+  "summary": {},
+  "warnings": {"base": [], "head": []},
+  "changes": [],
+  "limitations": [
+    "Experimental Meteoric JSON 1.0 structure; producer/version not authenticated.",
+    "Context is a caller assertion of same game and export lineage, not verification.",
+    "Reference correspondence is not content integrity, FOMOD equivalence or compatibility.",
+    "Changed file IDs, incomplete identities and collisions can remain unresolved."
+  ]
+}

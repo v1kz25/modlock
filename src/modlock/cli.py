@@ -1,16 +1,24 @@
-"""Help and development version for the initial CLI setup."""
+"""Compare two explicit local exports, without overwriting inputs or outputs."""
 
+import sys
+from enum import StrEnum
+from pathlib import Path
 from typing import Annotated
 
 import typer
 
 from modlock import __version__
+from modlock.comparison import compare_exports
+from modlock.identity import normalize_export
+from modlock.meteoric import ReaderError, read_meteoric
+from modlock.reports import render_json, render_markdown, report_data
 
-app = typer.Typer(add_completion=False)
+app = typer.Typer(add_completion=False, pretty_exceptions_enable=False)
 
 
-@app.command(
-    help="modlock: initial CLI setup. Export reading and auditing are not available yet.",
+@app.callback(
+    invoke_without_command=True,
+    help="Experimental read-only comparison of local Meteoric exports.",
 )
 def main(
     ctx: typer.Context,
@@ -21,5 +29,58 @@ def main(
     """Display setup help when no option is supplied."""
     if version:
         typer.echo(f"modlock {__version__}")
-    else:
+        raise typer.Exit()
+    if ctx.invoked_subcommand is None:
         typer.echo(ctx.get_help())
+
+
+class ReportFormat(StrEnum):
+    json = "json"
+    markdown = "markdown"
+
+
+@app.command("compare")
+def compare(
+    base: Path,
+    head: Path,
+    context: Annotated[
+        str | None,
+        typer.Option(
+            help="Assert same game AND export lineage; otherwise all mods stay unresolved."
+        ),
+    ] = None,
+    format: Annotated[
+        ReportFormat, typer.Option("--format", help="Report format.")
+    ] = ReportFormat.json,
+    output: Annotated[
+        Path | None,
+        typer.Option("--output", "-o", help="New output file only; never overwrite."),
+    ] = None,
+) -> None:
+    """Compare BASE and HEAD read-only; emit experimental JSON or Markdown."""
+    try:
+        old, new = (
+            normalize_export(read_meteoric(base)),
+            normalize_export(read_meteoric(head)),
+        )
+        result = compare_exports(old, new, context=context)
+        data = report_data(result, old.read_warnings, new.read_warnings)
+        text = (
+            render_json(data) if format == ReportFormat.json else render_markdown(data)
+        )
+        if output is None:
+            sys.stdout.buffer.write(text.encode("utf-8"))
+            sys.stdout.flush()
+        else:
+            with output.open("x", encoding="utf-8", newline="\n") as stream:
+                stream.write(text)
+    except FileExistsError:
+        typer.echo("Error: output already exists; choose a new file.", err=True)
+        raise typer.Exit(1) from None
+    except ReaderError as exc:
+        typer.echo(f"Error [{exc.code}]: {exc}", err=True)
+        raise typer.Exit(1) from None
+    except (OSError, ValueError) as exc:
+        message = str(exc) if isinstance(exc, ValueError) else "Unable to write output."
+        typer.echo(f"Error: {message}", err=True)
+        raise typer.Exit(1) from None
