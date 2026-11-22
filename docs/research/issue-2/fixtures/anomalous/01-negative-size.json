@@ -1,0 +1,18 @@
+[
+  {
+    "id": 91002,
+    "type": "mod",
+    "separatorName": "Unsectioned",
+    "modName": "Negative Count",
+    "displayName": "Negative Count",
+    "plugins": [],
+    "general": {},
+    "installed": {
+      "size": -1,
+      "files": []
+    },
+    "order": 0,
+    "tags": [],
+    "active": true
+  }
+]

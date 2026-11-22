@@ -1,0 +1,80 @@
+{
+  "valid/01-empty.json": [],
+  "valid/02-unsectioned-unicode.json": [
+    {
+      "name": "Salida local Café [Final]",
+      "nexus": 0,
+      "active": true,
+      "plugins": [
+        "A.ESM",
+        "Parche.esp",
+        "z.esl"
+      ],
+      "meta": null
+    }
+  ],
+  "valid/03-metadata.json": [
+    {
+      "name": "[Grupo] Base_separator",
+      "separator": true
+    },
+    {
+      "name": "[Audit] Archivo Sintético",
+      "nexus": 91001,
+      "active": false,
+      "plugins": [
+        "Sintetico.esp"
+      ],
+      "meta": "[General]\nmodid=91001\nversion=d2026.11.22.0\nnewestVersion=\ncategory=\"7,\"\ninstallationFile=Archivo-91001-1-0.zip\n[installedFiles]\nsize=2\n1\\modid=91001\n1\\fileid=81001\n2\\modid=91001\n2\\fileid=81002\n"
+    }
+  ],
+  "valid/04-empty-sections.json": [
+    {
+      "name": "Local Defaults",
+      "nexus": 0,
+      "active": true,
+      "plugins": [],
+      "meta": "[General]\n[installedFiles]\nsize=0\n"
+    }
+  ],
+  "valid/05-name-collision.json": [
+    {
+      "name": "[A] Local Patch",
+      "nexus": 0,
+      "active": true,
+      "plugins": [],
+      "meta": null
+    },
+    {
+      "name": "[B] Local Patch",
+      "nexus": 0,
+      "active": true,
+      "plugins": [],
+      "meta": null
+    }
+  ],
+  "valid/06-separator-only.json": [
+    {
+      "name": "[Grupo] Núcleo_separator",
+      "separator": true
+    }
+  ],
+  "anomalous/01-negative-size.json": [
+    {
+      "name": "Negative Count",
+      "nexus": 91002,
+      "active": true,
+      "plugins": [],
+      "meta": "[installedFiles]\nsize=-1\n"
+    }
+  ],
+  "anomalous/02-partial-installed.json": [
+    {
+      "name": "Partial Files",
+      "nexus": 91003,
+      "active": true,
+      "plugins": [],
+      "meta": "[installedFiles]\nsize=2\n1\\modid=91003\n1\\fileid=81003\n2\\modid=91003\n2\\fileid=%broken\n"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+# Keep documented hashes stable across Windows checkouts.
+* text eol=lf
+# Intentional invalid UTF-8: preserve bytes without text conversion.
+fixtures/invalid/11-non-utf8.json -text -diff !eol

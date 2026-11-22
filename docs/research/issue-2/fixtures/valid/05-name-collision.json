@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Local Patch",
+    "type": "mod",
+    "separatorName": "Unsectioned",
+    "modName": "Local Patch",
+    "displayName": "[A] Local Patch",
+    "plugins": [],
+    "general": {},
+    "installed": {},
+    "order": 0,
+    "tags": [
+      "A"
+    ],
+    "active": true
+  },
+  {
+    "id": "Local Patch",
+    "type": "mod",
+    "separatorName": "Unsectioned",
+    "modName": "Local Patch",
+    "displayName": "[B] Local Patch",
+    "plugins": [],
+    "general": {},
+    "installed": {},
+    "order": 1,
+    "tags": [
+      "B"
+    ],
+    "active": true
+  }
+]
