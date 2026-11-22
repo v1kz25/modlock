@@ -1,0 +1,17 @@
+[
+  {
+    "id": null,
+    "type": "separator",
+    "separatorName": "Núcleo",
+    "modName": "Núcleo",
+    "displayName": "[Grupo] Núcleo_separator",
+    "plugins": [],
+    "general": {},
+    "installed": {},
+    "order": 0,
+    "tags": [
+      "Grupo"
+    ],
+    "active": true
+  }
+]

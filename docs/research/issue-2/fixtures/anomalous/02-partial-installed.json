@@ -1,0 +1,23 @@
+[
+  {
+    "id": 91003,
+    "type": "mod",
+    "separatorName": "Unsectioned",
+    "modName": "Partial Files",
+    "displayName": "Partial Files",
+    "plugins": [],
+    "general": {},
+    "installed": {
+      "size": 2,
+      "files": [
+        {
+          "modid": "91003",
+          "fileid": "81003"
+        }
+      ]
+    },
+    "order": 0,
+    "tags": [],
+    "active": true
+  }
+]

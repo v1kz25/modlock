@@ -1,0 +1,159 @@
+{
+  "meteoric_commit": "1e34b9918a81239b71789a5472f6bc16ffdab70b",
+  "python": "3.12.14",
+  "fixtures": [
+    {
+      "path": "anomalous/01-negative-size.json",
+      "sha256": "841894babc1b5c72dbba1b0705ce42447d04b6452ee10265c7042310c7014e87",
+      "utf8": true,
+      "json_syntax": true,
+      "exporter_roundtrip": true
+    },
+    {
+      "path": "anomalous/02-partial-installed.json",
+      "sha256": "3ba12adc2bb26a3b2475ae69ca66edd86d6efe64d03eabf8248835437ba7692d",
+      "utf8": true,
+      "json_syntax": true,
+      "exporter_roundtrip": true
+    },
+    {
+      "path": "invalid/01-root-object.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "utf8": true,
+      "json_syntax": true,
+      "exporter_roundtrip": null
+    },
+    {
+      "path": "invalid/02-root-null.json",
+      "sha256": "38e0b9de817f645c4bec37c0d4a3e58baecccb040f5718dc069a72c7385a0bed",
+      "utf8": true,
+      "json_syntax": true,
+      "exporter_roundtrip": null
+    },
+    {
+      "path": "invalid/03-missing-active.json",
+      "sha256": "47fcf5e20a981881417a4166ba64710c4e4fa8a1d48d29c246fc3a627a5258b6",
+      "utf8": true,
+      "json_syntax": true,
+      "exporter_roundtrip": null
+    },
+    {
+      "path": "invalid/04-active-string.json",
+      "sha256": "6a2a93583b91889d7fe6a3bda222b43fa2ed1a40a001fa92192c0fffd4bb5271",
+      "utf8": true,
+      "json_syntax": true,
+      "exporter_roundtrip": null
+    },
+    {
+      "path": "invalid/05-unknown-type.json",
+      "sha256": "adae349de4b1feecb2201231fb074d0ed6c60134cdd2eaf333a24c15b5c8b864",
+      "utf8": true,
+      "json_syntax": true,
+      "exporter_roundtrip": null
+    },
+    {
+      "path": "invalid/06-general-array.json",
+      "sha256": "161be10bf7b0955ab4eb8b6525ebaef190e50d45aa03c92808e7b7336dc9657c",
+      "utf8": true,
+      "json_syntax": true,
+      "exporter_roundtrip": null
+    },
+    {
+      "path": "invalid/07-order-fraction.json",
+      "sha256": "5ff6b8041fdb8ee26763837b6074d5bf2d1d4af3f591fd39c1582196478b552c",
+      "utf8": true,
+      "json_syntax": true,
+      "exporter_roundtrip": null
+    },
+    {
+      "path": "invalid/08-orphan-section.json",
+      "sha256": "083a56c9394deb8bdb600a881e28ca249fc8afb07d4259896ab1c77ded6d205c",
+      "utf8": true,
+      "json_syntax": true,
+      "exporter_roundtrip": null
+    },
+    {
+      "path": "invalid/09-order-gap.json",
+      "sha256": "f43cfea4c3439900a80319f72541c1a2c454be99b42403c00d92750f6284719a",
+      "utf8": true,
+      "json_syntax": true,
+      "exporter_roundtrip": null
+    },
+    {
+      "path": "invalid/10-truncated.json",
+      "sha256": "9d3c6e466dc382e61a0e128b72521218ef0d69e86a4d1a703bc35bf764c5983b",
+      "utf8": true,
+      "json_syntax": false,
+      "exporter_roundtrip": null
+    },
+    {
+      "path": "invalid/11-non-utf8.json",
+      "sha256": "379af949f1f0fe32439c2c960df7adf60d3a858b8c640c858fb780fb79bf5c94",
+      "utf8": false,
+      "json_syntax": null,
+      "exporter_roundtrip": null
+    },
+    {
+      "path": "valid/01-empty.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "utf8": true,
+      "json_syntax": true,
+      "exporter_roundtrip": true
+    },
+    {
+      "path": "valid/02-unsectioned-unicode.json",
+      "sha256": "fc15cd7d49936ff89ca8824df4a42fdacc8c3c510310812d4eb7236a52721704",
+      "utf8": true,
+      "json_syntax": true,
+      "exporter_roundtrip": true
+    },
+    {
+      "path": "valid/03-metadata.json",
+      "sha256": "5709d49a8114ccbd5b7a721fe0e03d016f69cbee0f88717199b903fab353fa02",
+      "utf8": true,
+      "json_syntax": true,
+      "exporter_roundtrip": true
+    },
+    {
+      "path": "valid/04-empty-sections.json",
+      "sha256": "43c3bf192eb037c8002e862e1b6107a4804bafe8cc85159035e0163ef466c8f3",
+      "utf8": true,
+      "json_syntax": true,
+      "exporter_roundtrip": true
+    },
+    {
+      "path": "valid/05-name-collision.json",
+      "sha256": "21d96f7caf3fc1ee9524c7a413edf6db9573ef7f2baebd9b02e20f2aacb3f4a6",
+      "utf8": true,
+      "json_syntax": true,
+      "exporter_roundtrip": true
+    },
+    {
+      "path": "valid/06-separator-only.json",
+      "sha256": "c7b45babb3dfa15d342a9669b4b0f016732cc47734ab34fcb9dbab757aac8395",
+      "utf8": true,
+      "json_syntax": true,
+      "exporter_roundtrip": true
+    }
+  ],
+  "negative_observations": {
+    "root_object": true,
+    "root_null": true,
+    "missing_active": true,
+    "active_string": true,
+    "unknown_type": true,
+    "general_array": true,
+    "order_fraction": true,
+    "orphan_section": true,
+    "order_gap": true
+  },
+  "upstream_file_sha256": {
+    "README.md": "2e824768bdfd8d4f9ca375c773df76a422922b5f7029d5feab6ca5fb227554c1",
+    "LICENSE": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+    "mo2-plugins/modlist_compare/FORMAT_SPECIFICATION.md": "0839405bba174c29d6f3a02e65f74979e7cf1759c5abc2aad2e291d5ae0c5a50",
+    "mo2-plugins/modlist_compare/exporter_core.py": "b5b34f779096a7d36441317b00f0d56ec812a5f2d26c9e00e2d017bb5cbed349",
+    "mo2-plugins/modlist_compare/plugin_tools.py": "67f6620ada73e0bf2ca1d41d3df844eb40b49019cad74a0a9573e468f44f6292",
+    "examples/lists/Example List 1.0.json": "403f80259ec80284640ff399fa949b50022884387db563c2eb43ee121f04f8bc",
+    "examples/lists/Example List 1.1.json": "2de2a833e89d8f6f5af9caa0a1cbdc15446390f8fc5ce019a413f4f52d9cfa68"
+  }
+}
