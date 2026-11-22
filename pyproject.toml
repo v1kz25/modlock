@@ -5,9 +5,11 @@ build-backend = "flit_core.buildapi"
 [project]
 name = "modlock"
 dynamic = ["version"]
-description = "Experimental setup for a local read-only modlist audit CLI."
+description = "Experimental local read-only comparison of Meteoric modlist exports."
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
+license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
 dependencies = ["typer==0.29.2"]
 
 [project.optional-dependencies]
@@ -15,6 +17,10 @@ dev = ["pytest==9.2.0", "ruff==0.17.6"]
 
 [project.scripts]
 modlock = "modlock.cli:app"
+
+[tool.flit.sdist]
+include = ["tests/", "docs/", "examples/", "requirements-dev.txt", "requirements-runtime.txt", "CHANGELOG.md", "AGENTS.md"]
+exclude = ["**/__pycache__/", "**/*.pyc"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

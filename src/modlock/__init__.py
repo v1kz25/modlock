@@ -1,3 +1,3 @@
-"""Minimal setup for modlock; audit functionality is not implemented."""
+"""Experimental read-only comparison of Meteoric modlist exports."""
 
-__version__ = "0.0.0.dev0"
+__version__ = "0.1.0a1"
