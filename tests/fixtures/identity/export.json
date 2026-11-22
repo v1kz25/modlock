@@ -1,0 +1,212 @@
+[
+  {
+    "id": null,
+    "type": "separator",
+    "separatorName": "Identity",
+    "modName": "Identity",
+    "displayName": "Identity_separator",
+    "plugins": [],
+    "general": {},
+    "installed": {},
+    "order": 0,
+    "tags": [],
+    "active": true
+  },
+  {
+    "id": 101,
+    "type": "mod",
+    "separatorName": "Identity",
+    "modName": "Café Pack",
+    "displayName": "Café Pack",
+    "plugins": [
+      "a.ESP"
+    ],
+    "general": {
+      "modid": "00101",
+      "version": "d2026.11.22.0",
+      "newestVersion": "",
+      "category": "",
+      "installationFile": ""
+    },
+    "installed": {
+      "size": 1,
+      "files": [
+        {
+          "modid": "00101",
+          "fileid": "01001"
+        }
+      ]
+    },
+    "order": 1,
+    "tags": [],
+    "active": false,
+    "future": {
+      "note": "synthetic only"
+    }
+  },
+  {
+    "id": 202,
+    "type": "mod",
+    "separatorName": "Identity",
+    "modName": "Variant One",
+    "displayName": "Variant One",
+    "plugins": [],
+    "general": {
+      "modid": "202",
+      "version": "1.0.0.0",
+      "newestVersion": "",
+      "category": "",
+      "installationFile": ""
+    },
+    "installed": {
+      "size": 1,
+      "files": [
+        {
+          "modid": "202",
+          "fileid": "2001"
+        }
+      ]
+    },
+    "order": 2,
+    "tags": [],
+    "active": true
+  },
+  {
+    "id": 202,
+    "type": "mod",
+    "separatorName": "Identity",
+    "modName": "Variant Two",
+    "displayName": "Variant Two",
+    "plugins": [],
+    "general": {
+      "modid": "202",
+      "version": "1.0.0.0",
+      "newestVersion": "",
+      "category": "",
+      "installationFile": ""
+    },
+    "installed": {
+      "size": 1,
+      "files": [
+        {
+          "modid": "202",
+          "fileid": "2002"
+        }
+      ]
+    },
+    "order": 3,
+    "tags": [],
+    "active": true
+  },
+  {
+    "id": 303,
+    "type": "mod",
+    "separatorName": "Identity",
+    "modName": "Duplicate A",
+    "displayName": "Duplicate A",
+    "plugins": [],
+    "general": {
+      "modid": "303",
+      "version": "1.0.0.0",
+      "newestVersion": "",
+      "category": "",
+      "installationFile": ""
+    },
+    "installed": {
+      "size": 1,
+      "files": [
+        {
+          "modid": "303",
+          "fileid": "3001"
+        }
+      ]
+    },
+    "order": 4,
+    "tags": [],
+    "active": true
+  },
+  {
+    "id": 303,
+    "type": "mod",
+    "separatorName": "Identity",
+    "modName": "Duplicate B",
+    "displayName": "Duplicate B",
+    "plugins": [],
+    "general": {
+      "modid": "303",
+      "version": "1.0.0.0",
+      "newestVersion": "",
+      "category": "",
+      "installationFile": ""
+    },
+    "installed": {
+      "size": 1,
+      "files": [
+        {
+          "modid": "303",
+          "fileid": "3001"
+        }
+      ]
+    },
+    "order": 5,
+    "tags": [],
+    "active": true
+  },
+  {
+    "id": "Local Patch",
+    "type": "mod",
+    "separatorName": "Identity",
+    "modName": "Local Patch",
+    "displayName": "[A] Local Patch",
+    "plugins": [],
+    "general": {},
+    "installed": {},
+    "order": 6,
+    "tags": [
+      "A"
+    ],
+    "active": true
+  },
+  {
+    "id": "local patch",
+    "type": "mod",
+    "separatorName": "Identity",
+    "modName": "local patch",
+    "displayName": "[B] local patch",
+    "plugins": [],
+    "general": {},
+    "installed": {},
+    "order": 7,
+    "tags": [
+      "B"
+    ],
+    "active": true
+  },
+  {
+    "id": 505,
+    "type": "mod",
+    "separatorName": "Identity",
+    "modName": "Partial Files",
+    "displayName": "Partial Files",
+    "plugins": [],
+    "general": {
+      "modid": "505",
+      "version": "1.0.0.0",
+      "newestVersion": "",
+      "category": "",
+      "installationFile": ""
+    },
+    "installed": {
+      "size": 2,
+      "files": [
+        {
+          "modid": "505",
+          "fileid": "5001"
+        }
+      ]
+    },
+    "order": 8,
+    "tags": [],
+    "active": true
+  }
+]

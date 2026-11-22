@@ -2,7 +2,7 @@
 
 > Estado: inicialización experimental. **Aún no hay MVP implementado**.
 
-El [spike del issue #1](docs/research/issue-1/REPORT.md) conserva el veredicto histórico **CONTRIBUIR**. El propietario decidió después seguir investigando modlock como auditor independiente y complementario a Meteoric. Tras integrar #3 autorizó continuar con **#6: lector read-only**; la autorización no incluye identidad, comparación ni MVP. Es una decisión del propietario; no demuestra demanda ni valida el backlog. Las versiones propuestas siguen condicionadas a decisiones posteriores.
+El [spike del issue #1](docs/research/issue-1/REPORT.md) conserva el veredicto histórico **CONTRIBUIR**. El propietario decidió después seguir investigando modlock como auditor independiente y complementario a Meteoric. Tras integrar #6 autorizó continuar con **#7: identidad e incertidumbre**; la autorización no incluye matching, comparación ni MVP. Es una decisión del propietario; no demuestra demanda ni valida el backlog. Las versiones propuestas siguen condicionadas a decisiones posteriores.
 
 Auditoría read-only de modlists: diferencias semánticas y riesgos de reproducibilidad.
 
@@ -15,6 +15,8 @@ Comparar exportaciones existentes de listas de mods, preservando incertidumbre e
 CLI de desarrollo con ayuda y versión `0.0.0.dev0`; sin comandos de lectura, comparación o auditoría. Base inicial comprobada: CPython 3.12, Windows 11 x64 y Typer 0.29.2.
 
 API interna `modlock.meteoric.read_meteoric`: lectura tipada del [formato Meteoric estudiado](docs/formats/meteoric-json-v1.md), con errores de estructura y advertencias por metadatos incompletos. Conserva orden, registros y campos originales sin decidir identidad. Todavía no está conectada a la CLI.
+
+API interna `modlock.identity.normalize_export`: [modelo de referencias e incertidumbre](docs/IDENTITY.md) que conserva todos los registros, marca faltantes y colisiones dentro de un export y no inventa correspondencias entre listas. Una referencia completa local no demuestra identidad global ni igualdad de instalación.
 
 Después de la [instalación local](docs/DEVELOPMENT.md):
 

@@ -2,7 +2,7 @@
 
 ## Estado
 
-Setup #3 integrado y lector interno #6 preparado para revisión: paquete instalable localmente, CLI Typer de ayuda/versión y API `read_meteoric`. No hay normalización de identidad, comparación ni auditorías. El veredicto histórico CONTRIBUIR permanece. La instrucción del propietario «Fusiona y sigue», tras recomendar #6, autoriza este lector pese a la condición heredada del issue; no demuestra demanda ni autoriza tareas posteriores.
+Setup #3 y lector #6 integrados; modelo interno #7 preparado para revisión. `read_meteoric` lee y `normalize_export` conserva los registros y anota evidencia de identidad e incertidumbre local. No hay matching, comparación ni auditorías; la CLI mantiene solo ayuda/versión. La instrucción del propietario de continuar con la siguiente tarea autoriza #7, pese a la condición histórica de diferenciación. CONTRIBUIR permanece como veredicto del spike; la decisión del propietario no demuestra demanda ni autoriza tareas posteriores.
 
 ## Entorno comprobado y elección de versiones
 
@@ -67,11 +67,11 @@ Resultados ejecutados el **22-11-2026**:
 
 La primera ejecución de tests detectó una aserción frágil por el salto de línea de la ayuda en terminal estrecha; se corrigió normalizando espacios en esa aserción y la suite final pasó completa. No se alteró la CLI para acomodar una salida falsa. El lint se limita al paquete y sus tests; no convierte scripts históricos de investigación en código del producto. No se configura CI ni publicación.
 
-La tabla anterior registra el setup #3. La validación del lector #6, los límites y un smoke con fixture sintético se describen en el [contrato del lector](formats/meteoric-json-v1.md#lector-interno-del-issue-6). No hay prueba manual obligatoria de usuario: los comandos y el smoke los ejecuta el agente. La GUI MO2 y auditorías siguen fuera del alcance.
+La tabla anterior registra el setup #3. La validación del lector #6 se describe en el [contrato del lector](formats/meteoric-json-v1.md#lector-interno-del-issue-6); reglas, golden y comandos del modelo #7 en [IDENTITY.md](IDENTITY.md). La normalización no hace I/O: recibe un resultado del lector y conserva copias separadas de sus datos. No hay prueba manual obligatoria de usuario: el agente ejecuta comandos y smoke sintéticos. La GUI MO2 y auditorías siguen fuera del alcance.
 
 ## Siguiente dependencia, sin autorización automática
 
-Tras revisar e integrar #6, el siguiente issue técnico sería **#7** (identidad normalizada e incertidumbre), antes de #4. Requiere nueva autorización del propietario; el lector solo extrae datos del formato, sin decidir identidad ni fusionar duplicados. No se inicia #4 por su número menor.
+Tras revisar e integrar #7, el siguiente issue técnico sería **#4** (motor de comparación sobre el modelo). Requiere nueva autorización y decisiones sobre el contexto de las referencias; este formato no proporciona juego ni hashes. El #7 no ofrece correspondencias entre exports ni fusiona duplicados. No se inicia #4, CLI de comparación ni informes en esta tarea.
 
 ## Gitflow
 
