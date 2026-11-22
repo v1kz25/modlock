@@ -2,7 +2,7 @@
 
 ## Estado
 
-Setup del issue #3: paquete instalable localmente, CLI Typer de ayuda/versión y pruebas. No hay lector, comparación ni auditorías. El veredicto histórico CONTRIBUIR de #1 permanece; el propietario decidió después investigar una herramienta independiente complementaria y autorizó solo este setup, sin afirmar demanda ni comprometer el backlog.
+Setup #3 integrado y lector interno #6 preparado para revisión: paquete instalable localmente, CLI Typer de ayuda/versión y API `read_meteoric`. No hay normalización de identidad, comparación ni auditorías. El veredicto histórico CONTRIBUIR permanece. La instrucción del propietario «Fusiona y sigue», tras recomendar #6, autoriza este lector pese a la condición heredada del issue; no demuestra demanda ni autoriza tareas posteriores.
 
 ## Entorno comprobado y elección de versiones
 
@@ -67,11 +67,11 @@ Resultados ejecutados el **22-11-2026**:
 
 La primera ejecución de tests detectó una aserción frágil por el salto de línea de la ayuda en terminal estrecha; se corrigió normalizando espacios en esa aserción y la suite final pasó completa. No se alteró la CLI para acomodar una salida falsa. El lint se limita al paquete y sus tests; no convierte scripts históricos de investigación en código del producto. No se configura CI ni publicación.
 
-No hay prueba manual obligatoria de usuario para este setup: los comandos y el smoke ya se ejecutaron. Los comandos anteriores permiten revisarlo sin datos de mods. La GUI MO2, parser y auditorías siguen fuera del alcance.
+La tabla anterior registra el setup #3. La validación del lector #6, los límites y un smoke con fixture sintético se describen en el [contrato del lector](formats/meteoric-json-v1.md#lector-interno-del-issue-6). No hay prueba manual obligatoria de usuario: los comandos y el smoke los ejecuta el agente. La GUI MO2 y auditorías siguen fuera del alcance.
 
 ## Siguiente dependencia, sin autorización automática
 
-Tras revisar e integrar #3, el siguiente issue técnico sería **#6** (lector del formato #2), antes de #7 y #4. Su texto conserva una condición de no comenzar con CONTRIBUIR: el propietario deberá autorizar y aclarar expresamente ese alcance antes de iniciarlo. La decisión actual solo autoriza #3; no resuelve por sí sola la puerta del lector. No se inicia #4 por su número menor.
+Tras revisar e integrar #6, el siguiente issue técnico sería **#7** (identidad normalizada e incertidumbre), antes de #4. Requiere nueva autorización del propietario; el lector solo extrae datos del formato, sin decidir identidad ni fusionar duplicados. No se inicia #4 por su número menor.
 
 ## Gitflow
 
