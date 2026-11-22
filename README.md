@@ -2,7 +2,7 @@
 
 > Estado: inicialización experimental. **Aún no hay MVP implementado**.
 
-El [spike del issue #1](docs/research/issue-1/REPORT.md) conserva el veredicto histórico **CONTRIBUIR**. El propietario decidió después seguir investigando modlock como auditor independiente y complementario a Meteoric. Tras integrar #6 autorizó continuar con **#7: identidad e incertidumbre**; la autorización no incluye matching, comparación ni MVP. Es una decisión del propietario; no demuestra demanda ni valida el backlog. Las versiones propuestas siguen condicionadas a decisiones posteriores.
+El [spike del issue #1](docs/research/issue-1/REPORT.md) conserva el veredicto histórico **CONTRIBUIR**. El propietario decidió después seguir investigando modlock como auditor independiente y complementario a Meteoric. Tras integrar #7 autorizó completar **#4, #8, #9 y #10 y publicar v0.1.0 experimental**, con fusiones secuenciales y aviso si hace falta prueba manual. Es una decisión del propietario; no demuestra demanda ni valida el backlog. Las versiones propuestas siguen condicionadas a decisiones posteriores.
 
 Auditoría read-only de modlists: diferencias semánticas y riesgos de reproducibilidad.
 
@@ -61,3 +61,5 @@ Los algoritmos de identificación fuzzy pueden confundir mods; ecosistemas y for
 ## Licencia
 
 **Pendiente de decisión.** Este repositorio se publica sin archivo LICENSE por ahora. Ser público en GitHub no otorga automáticamente permiso para copiar, modificar o redistribuir su contenido.
+
+Motor interno: [comparación conservadora](docs/COMPARISON.md), con contexto explícito y referencias exactas; sin heurística por nombre ni inferencia de actualizaciones por página.
