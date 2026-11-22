@@ -2,6 +2,8 @@
 
 > Estado: planificación inicial. **Aún no hay MVP implementado**.
 
+El [spike del issue #1](docs/research/issue-1/REPORT.md) propone **CONTRIBUIR** a Meteoric, pendiente de revisión. Incluye diez comparaciones sintéticas ejecutadas y dos métricas de auditoría. No se inicia el MVP ni se comprometen las versiones propuestas sin una decisión posterior.
+
 Auditoría read-only de modlists: diferencias semánticas y riesgos de reproducibilidad.
 
 ## Objetivo

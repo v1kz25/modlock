@@ -1,0 +1,28 @@
+[
+  {
+    "id": null,
+    "type": "separator",
+    "separatorName": "Core",
+    "modName": "Core",
+    "displayName": "Core_separator",
+    "plugins": [],
+    "general": {},
+    "installed": {},
+    "order": 0,
+    "tags": [],
+    "active": true
+  },
+  {
+    "id": "Local Output",
+    "type": "mod",
+    "separatorName": "Core",
+    "modName": "Local Output",
+    "displayName": "Local Output",
+    "plugins": [],
+    "general": {},
+    "installed": {},
+    "order": 1,
+    "tags": [],
+    "active": true
+  }
+]

@@ -1,0 +1,518 @@
+{
+  "meteoric_commit": "1e34b9918a81239b71789a5472f6bc16ffdab70b",
+  "python": "3.12.14",
+  "cases": [
+    {
+      "case": "01-identical",
+      "matched": [
+        [
+          "Synthetic Alpha",
+          "Synthetic Alpha"
+        ]
+      ],
+      "added": [],
+      "removed": [],
+      "updated": [],
+      "diff_changes": [
+        {
+          "old": "Synthetic Alpha",
+          "new": "Synthetic Alpha",
+          "flags": 0
+        }
+      ],
+      "coverage": {
+        "common": 1
+      },
+      "reference_coverage": {
+        "old": {
+          "complete": 1,
+          "total": 1
+        },
+        "new": {
+          "complete": 1,
+          "total": 1
+        }
+      },
+      "matching_stability": {
+        "stable": 1,
+        "total": 1,
+        "permutations": 1,
+        "distinct_pairings": 1
+      },
+      "input_sha256": {
+        "old": "efef2206546f079affdd618fd9c2d41caed637a51ff7befb48120f5ea7dc35bc",
+        "new": "efef2206546f079affdd618fd9c2d41caed637a51ff7befb48120f5ea7dc35bc"
+      },
+      "output_sha256": {
+        "changelog.md": "29c16163787e5c415bfc67e75900175b408f22213648016e9346d44fc6173395",
+        "diff.html": "62e34eeb44ea06408607031a9a989369c7bc79ab51af2034e47329e0243b0bdb",
+        "coverage.html": "eb1ea6f840eff63a374edc283516bca2db95445299e31aee83f6a67c3ec2f070"
+      }
+    },
+    {
+      "case": "02-version",
+      "matched": [
+        [
+          "Synthetic Alpha",
+          "Synthetic Alpha"
+        ]
+      ],
+      "added": [],
+      "removed": [],
+      "updated": [
+        [
+          "Synthetic Alpha",
+          "1.0",
+          "2.0"
+        ]
+      ],
+      "diff_changes": [
+        {
+          "old": "Synthetic Alpha",
+          "new": "Synthetic Alpha",
+          "flags": 8
+        }
+      ],
+      "coverage": {
+        "newer": 1
+      },
+      "reference_coverage": {
+        "old": {
+          "complete": 1,
+          "total": 1
+        },
+        "new": {
+          "complete": 1,
+          "total": 1
+        }
+      },
+      "matching_stability": {
+        "stable": 1,
+        "total": 1,
+        "permutations": 1,
+        "distinct_pairings": 1
+      },
+      "input_sha256": {
+        "old": "efef2206546f079affdd618fd9c2d41caed637a51ff7befb48120f5ea7dc35bc",
+        "new": "a2255bcf4f9d4a859f0a1f6c009fc7ccbf7df09042139d4f86b30a5e17f30740"
+      },
+      "output_sha256": {
+        "changelog.md": "e9ed1b6214a837497c564b8b56e460ad8a6e4c22129738db300b95de1d3331ed",
+        "diff.html": "7c267d8641e1707558e815c0e523b5323be749a8391b33d387d5192630cee450",
+        "coverage.html": "57c7aba833824ca75039fdabd1f4c7f11e1d708c821416fdfeb46a2c70109733"
+      }
+    },
+    {
+      "case": "03-order",
+      "matched": [
+        [
+          "Synthetic Alpha",
+          "Synthetic Alpha"
+        ],
+        [
+          "Synthetic Birch",
+          "Synthetic Birch"
+        ]
+      ],
+      "added": [],
+      "removed": [],
+      "updated": [],
+      "diff_changes": [
+        {
+          "old": "Synthetic Alpha",
+          "new": "Synthetic Alpha",
+          "flags": 0
+        },
+        {
+          "old": "Synthetic Birch",
+          "new": "Synthetic Birch",
+          "flags": 0
+        }
+      ],
+      "coverage": {
+        "common": 2
+      },
+      "reference_coverage": {
+        "old": {
+          "complete": 2,
+          "total": 2
+        },
+        "new": {
+          "complete": 2,
+          "total": 2
+        }
+      },
+      "matching_stability": {
+        "stable": 2,
+        "total": 2,
+        "permutations": 4,
+        "distinct_pairings": 1
+      },
+      "input_sha256": {
+        "old": "03dc6754aa94b1e7e20fbef2ffa6b6482fac8fc670baf7a2f7e6e4e3dccc5f05",
+        "new": "972dc98eb199cfbca673f0152897831a11a102d356ee2b806fd09a0d7ded647f"
+      },
+      "output_sha256": {
+        "changelog.md": "29c16163787e5c415bfc67e75900175b408f22213648016e9346d44fc6173395",
+        "diff.html": "9d16add29fe111b07a56111039125bb90fa61a4e70e1e9ca88cd21f462a4d060",
+        "coverage.html": "8d7ab892441458fba34c145dc8b1b792e9413bd45a66157fd55292e5cbfde8a4"
+      }
+    },
+    {
+      "case": "04-section",
+      "matched": [
+        [
+          "Synthetic Alpha",
+          "Synthetic Alpha"
+        ],
+        [
+          "Synthetic Birch",
+          "Synthetic Birch"
+        ]
+      ],
+      "added": [],
+      "removed": [],
+      "updated": [],
+      "diff_changes": [
+        {
+          "old": "Synthetic Alpha",
+          "new": "Synthetic Alpha",
+          "flags": 4
+        },
+        {
+          "old": "Synthetic Birch",
+          "new": "Synthetic Birch",
+          "flags": 0
+        }
+      ],
+      "coverage": {
+        "common": 2
+      },
+      "reference_coverage": {
+        "old": {
+          "complete": 2,
+          "total": 2
+        },
+        "new": {
+          "complete": 2,
+          "total": 2
+        }
+      },
+      "matching_stability": {
+        "stable": 2,
+        "total": 2,
+        "permutations": 4,
+        "distinct_pairings": 1
+      },
+      "input_sha256": {
+        "old": "2a3ee869fe40bbf03efd10d4f57fb2268c9fabbaac325a5dc9d9fdc252680d09",
+        "new": "aaec31a65559b998bdaa6dfcf2296d98ac757584ce46c387db8680d1f916645b"
+      },
+      "output_sha256": {
+        "changelog.md": "29c16163787e5c415bfc67e75900175b408f22213648016e9346d44fc6173395",
+        "diff.html": "9e767ccac4bbfd7e5459ca8bda282891676cd72d2981da4b4f4428a5e433f604",
+        "coverage.html": "852b47f120e627832eb2460f5da7c17cf3b9d414a2698ea2719b2348491cf660"
+      }
+    },
+    {
+      "case": "05-fuzzy",
+      "matched": [
+        [
+          "Synthetic Texture Kit",
+          "Synthetic Texture Kits"
+        ]
+      ],
+      "added": [],
+      "removed": [],
+      "updated": [],
+      "diff_changes": [
+        {
+          "old": "Synthetic Texture Kit",
+          "new": "Synthetic Texture Kits",
+          "flags": 0
+        }
+      ],
+      "coverage": {
+        "common": 1
+      },
+      "reference_coverage": {
+        "old": {
+          "complete": 0,
+          "total": 1
+        },
+        "new": {
+          "complete": 0,
+          "total": 1
+        }
+      },
+      "matching_stability": {
+        "stable": 1,
+        "total": 1,
+        "permutations": 1,
+        "distinct_pairings": 1
+      },
+      "input_sha256": {
+        "old": "9be2996d9fc518f9efeb5aac990bfe0b65ac5419d962880e7c66293716c2f4f9",
+        "new": "d07375de567b1436b356be22b707e42a030337a0fc08edd8fc1fd71b885f8896"
+      },
+      "output_sha256": {
+        "changelog.md": "29c16163787e5c415bfc67e75900175b408f22213648016e9346d44fc6173395",
+        "diff.html": "3523a115bb9399c73da06bc0ecf5f3bd62e4a0d3e784b9a79224b99e3ede33d3",
+        "coverage.html": "e165f588776323968fcc234c1449cf1efc0326ea2e57c90b68bf57fe248e52fe"
+      }
+    },
+    {
+      "case": "06-shared-page",
+      "matched": [
+        [
+          "Synthetic Alpha",
+          "Synthetic Alpha"
+        ],
+        [
+          "Synthetic Alpha Optional",
+          "Synthetic Alpha Optional"
+        ]
+      ],
+      "added": [],
+      "removed": [],
+      "updated": [],
+      "diff_changes": [
+        {
+          "old": "Synthetic Alpha",
+          "new": "Synthetic Alpha",
+          "flags": 0
+        },
+        {
+          "old": "Synthetic Alpha Optional",
+          "new": "Synthetic Alpha Optional",
+          "flags": 0
+        }
+      ],
+      "coverage": {
+        "common": 2
+      },
+      "reference_coverage": {
+        "old": {
+          "complete": 2,
+          "total": 2
+        },
+        "new": {
+          "complete": 2,
+          "total": 2
+        }
+      },
+      "matching_stability": {
+        "stable": 2,
+        "total": 2,
+        "permutations": 4,
+        "distinct_pairings": 1
+      },
+      "input_sha256": {
+        "old": "a068d9a5fed868a649cb156230b10f6add51bd573cc8868e6944d5b1215e813c",
+        "new": "26b8195f01d790f26d50538bd94dc8af605ca258e1210ed277c871c1d999f31e"
+      },
+      "output_sha256": {
+        "changelog.md": "29c16163787e5c415bfc67e75900175b408f22213648016e9346d44fc6173395",
+        "diff.html": "e617783c89e34ca24cdfbc9c7f73991f31ed17ea9b7ecd58b4464ad20f2fd381",
+        "coverage.html": "60ae213a96d97bedce72647389b6f319bb0c663dc13a6c67c533a12e1b71e4b7"
+      }
+    },
+    {
+      "case": "07-ambiguous",
+      "matched": [
+        [
+          "[A] Local Patch",
+          "[B] Local Patch"
+        ],
+        [
+          "[B] Local Patch",
+          "[A] Local Patch"
+        ]
+      ],
+      "added": [],
+      "removed": [],
+      "updated": [],
+      "diff_changes": [
+        {
+          "old": "[A] Local Patch",
+          "new": "[B] Local Patch",
+          "flags": 0
+        },
+        {
+          "old": "[B] Local Patch",
+          "new": "[A] Local Patch",
+          "flags": 0
+        }
+      ],
+      "coverage": {
+        "common": 2
+      },
+      "reference_coverage": {
+        "old": {
+          "complete": 0,
+          "total": 2
+        },
+        "new": {
+          "complete": 0,
+          "total": 2
+        }
+      },
+      "matching_stability": {
+        "stable": 0,
+        "total": 2,
+        "permutations": 4,
+        "distinct_pairings": 2
+      },
+      "input_sha256": {
+        "old": "8d48e1aad1b7f4c9a2519015ceb9c18c65f9cf4f5c36c49b2678b233d0b6c124",
+        "new": "73599ec3b9738fdce009810a55315bcb0de66f38175eb0550e4b15a3b3159692"
+      },
+      "output_sha256": {
+        "changelog.md": "29c16163787e5c415bfc67e75900175b408f22213648016e9346d44fc6173395",
+        "diff.html": "856b43b47c3287212f259c7a4f4332eb5b5e4dbd1e42e40b9c5f7278dc43f329",
+        "coverage.html": "6d337f3ec0af5069ec0452bf4c260863abe01365032b55dc7fd4d84f3a792fc8"
+      }
+    },
+    {
+      "case": "08-missing-meta",
+      "matched": [
+        [
+          "Local Output",
+          "Local Output"
+        ]
+      ],
+      "added": [],
+      "removed": [],
+      "updated": [],
+      "diff_changes": [
+        {
+          "old": "Local Output",
+          "new": "Local Output",
+          "flags": 0
+        }
+      ],
+      "coverage": {
+        "common": 1
+      },
+      "reference_coverage": {
+        "old": {
+          "complete": 0,
+          "total": 1
+        },
+        "new": {
+          "complete": 0,
+          "total": 1
+        }
+      },
+      "matching_stability": {
+        "stable": 1,
+        "total": 1,
+        "permutations": 1,
+        "distinct_pairings": 1
+      },
+      "input_sha256": {
+        "old": "9a902294f709010669a84e37949f005c8e9985d8a3f6212b4b3298ca926559ec",
+        "new": "9a902294f709010669a84e37949f005c8e9985d8a3f6212b4b3298ca926559ec"
+      },
+      "output_sha256": {
+        "changelog.md": "29c16163787e5c415bfc67e75900175b408f22213648016e9346d44fc6173395",
+        "diff.html": "8aaed6adb0a75844610010f22a614fd8f66eea29dba2e8991c4d46176a6b1b63",
+        "coverage.html": "89b7a30696a6d5ba69cc46077be68dd37e86c98cbde3a6d415f0a3b59128f253"
+      }
+    },
+    {
+      "case": "09-file-change",
+      "matched": [
+        [
+          "Synthetic Alpha",
+          "Synthetic Alpha"
+        ]
+      ],
+      "added": [],
+      "removed": [],
+      "updated": [],
+      "diff_changes": [
+        {
+          "old": "Synthetic Alpha",
+          "new": "Synthetic Alpha",
+          "flags": 0
+        }
+      ],
+      "coverage": {
+        "common": 1
+      },
+      "reference_coverage": {
+        "old": {
+          "complete": 1,
+          "total": 1
+        },
+        "new": {
+          "complete": 1,
+          "total": 1
+        }
+      },
+      "matching_stability": {
+        "stable": 1,
+        "total": 1,
+        "permutations": 1,
+        "distinct_pairings": 1
+      },
+      "input_sha256": {
+        "old": "efef2206546f079affdd618fd9c2d41caed637a51ff7befb48120f5ea7dc35bc",
+        "new": "4da5d56e04e9089c31577b00f86e9e968433e77f39711ff3bc28f0bc00b9155b"
+      },
+      "output_sha256": {
+        "changelog.md": "29c16163787e5c415bfc67e75900175b408f22213648016e9346d44fc6173395",
+        "diff.html": "62e34eeb44ea06408607031a9a989369c7bc79ab51af2034e47329e0243b0bdb",
+        "coverage.html": "eb1ea6f840eff63a374edc283516bca2db95445299e31aee83f6a67c3ec2f070"
+      }
+    },
+    {
+      "case": "10-active",
+      "matched": [
+        [
+          "Synthetic Alpha",
+          "Synthetic Alpha"
+        ]
+      ],
+      "added": [],
+      "removed": [],
+      "updated": [],
+      "diff_changes": [
+        {
+          "old": "Synthetic Alpha",
+          "new": "Synthetic Alpha",
+          "flags": 0
+        }
+      ],
+      "coverage": {
+        "common": 1
+      },
+      "reference_coverage": {
+        "old": {
+          "complete": 1,
+          "total": 1
+        },
+        "new": {
+          "complete": 1,
+          "total": 1
+        }
+      },
+      "matching_stability": {
+        "stable": 1,
+        "total": 1,
+        "permutations": 1,
+        "distinct_pairings": 1
+      },
+      "input_sha256": {
+        "old": "efef2206546f079affdd618fd9c2d41caed637a51ff7befb48120f5ea7dc35bc",
+        "new": "4ffd98a535a54b5ca03f58a852c69541f13248a9bfa77eca7c671641c46ee352"
+      },
+      "output_sha256": {
+        "changelog.md": "29c16163787e5c415bfc67e75900175b408f22213648016e9346d44fc6173395",
+        "diff.html": "62e34eeb44ea06408607031a9a989369c7bc79ab51af2034e47329e0243b0bdb",
+        "coverage.html": "eb1ea6f840eff63a374edc283516bca2db95445299e31aee83f6a67c3ec2f070"
+      }
+    }
+  ]
+}
