@@ -20,7 +20,7 @@ def test_help_exits_successfully(arguments: list[str]) -> None:
     assert result.exit_code == 0, result.output
     assert "--help" in result.output
     assert "--version" in result.output
-    assert "not available yet" in " ".join(result.output.split())
+    assert "compare" in result.output
     assert "--install-completion" not in result.output
 
 
@@ -32,7 +32,6 @@ def test_version_matches_package_metadata() -> None:
     assert result.exit_code == 0, result.output
     assert result.output.strip() == f"modlock {version('modlock')}"
     assert version("modlock") == __version__
-    assert "dev" in __version__
 
 
 @pytest.mark.parametrize(
@@ -40,7 +39,7 @@ def test_version_matches_package_metadata() -> None:
     [
         ["--unknown-option"],
         ["unexpected-argument"],
-        ["compare", "old.json", "new.json"],
+        ["not-a-command", "old.json", "new.json"],
         ["--version=invalid"],
     ],
 )
