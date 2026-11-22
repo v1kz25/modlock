@@ -115,3 +115,54 @@ No se seleccionan módulos, dependencias ni una versión de Python para producto
 El formato queda suficientemente identificado para planificar una lectura conservadora: versión documental y SHA concretos, campos y ausencias diferenciados, corpus y discrepancias del productor reproducibles. La evidencia ejecutada y sus resultados están en VALIDATION.md. No se ha probado una GUI MO2 ni otras revisiones del exportador, ni integridad/descarga de mods.
 
 No hay una prueba manual de usuario necesaria para este alcance documental. Si posteriormente se exige comprobar exportación desde MO2 real, deberá autorizarse con un perfil sintético y pasos explícitos en su PR; esta investigación no permite acceder a perfiles privados. Detenerse al entregar la PR del #2: cualquier fusión y cualquier issue posterior requieren autorización propia.
+
+## Lector interno del issue #6
+
+El estudio anterior registra el alcance histórico de #2. Después de integrar #3, el propietario autorizó continuar con #6. La implementación independiente está en `src/modlock/meteoric.py`; no se copia código de Meteoric ni se añaden dependencias. No implica que el archivo leído realmente proceda del commit estudiado: solo se reconoce su estructura conocida.
+
+API interna (desarrollo, todavía sin contrato público estable): `read_meteoric(path, max_bytes=16*1024*1024)` devuelve `MeteoricExport` con ruta de origen, tupla de registros tipados y advertencias. Cada registro conserva índice, orden declarado, nombres, ID de origen, activación, plugins/tags, metadatos extraídos y `raw` con todos los valores decodificados. No hay identidad normalizada ni comparación. Dos nombres/IDs iguales siguen siendo dos registros. Las dataclasses impiden reasignar atributos; los diccionarios devueltos no son profundamente inmutables, pero cambiarlos no escribe el archivo.
+
+Políticas adoptadas y comprobadas en #6:
+
+- UTF-8 estricto con o sin BOM; UTF-16 y bytes UTF-8 inválidos se rechazan, sin recodificar el archivo. El BOM aceptado es una decisión de lectura comprobada con un caso sintético, no un nuevo campo de formato.
+- Límite inicial de **16 MiB** de entrada, BOM incluido, configurable mediante entero positivo. Es una protección operativa para acotar la lectura completa, no un límite que publique Meteoric ni una garantía sobre memoria total o listas grandes. Se lee como máximo límite+1 bytes para detectar crecimiento después del stat. Los ensayos del límite usan tamaños pequeños equivalentes; no son un benchmark de listas de 16 MiB.
+- Solo archivos regulares, abiertos como `rb`; no se abren rutas nombradas dentro del JSON. Una ruta explícita puede ser un enlace a un archivo regular, siguiendo el comportamiento de Path/open; no se ofrece aislamiento contra cambios concurrentes del sistema de archivos. No se prueba aquí una matriz de symlinks o ACL reales de Windows.
+- Array y once campos superiores requeridos; tipos conocidos estrictos, sin convertir booleanos en enteros o strings en bool. `order` consecutivo y contexto de sección coherente; separadores con sus invariantes propios. No se reordenan, renumeran ni deduplican registros.
+- Campos desconocidos aceptados y conservados en `raw`, con `unknown_field` en el objeto que los contiene. Los nombres/valores desconocidos no se reproducen en el texto del diagnóstico. No se interpretan como soporte certificado de una revisión futura.
+- `general={}` difiere de cinco strings vacíos; `.general.get("version")` devuelve None si la clave falta y string vacío si estaba vacía. `installed.size/files` ausentes se representan como None, frente a 0/tupla vacía presentes. En archivos instalados faltantes, `.get("fileid")` devuelve None; no se crea un fileid vacío para sustituirlo.
+- Metadatos parciales, versión vacía o referencias a archivos con campos ausentes/vacíos generan `incomplete_metadata`. Conteos negativos o que difieren de la lista real generan `metadata_count`; se conservan el conteo y los elementos recibidos sin completarlos. Tipos incorrectos en un campo conocido impiden leer la estructura y generan error.
+- Claves JSON duplicadas se rechazan para evitar pérdida silenciosa de valores. Esto no es detección de mods duplicados. Constantes no estándar (NaN/Infinity), números no finitos al decodificarlos y límites propios del decodificador generan error controlado. `raw` conserva el valor JSON decodificado, no la representación textual de números/espacios ni los bytes del archivo.
+
+`ReaderError` incluye `code`, `location` JSON y mensaje sin contenido privado del archivo. Categorías: `io` (acceso/ruta), `file_type`, `size`, `encoding`, `json`, `structure` y `unsupported` (tipo de registro desconocido). Errores JSON de sintaxis incluyen línea/columna. Los tipos JSON que no son registros se rechazan como estructura cuando el decodificador consigue leerlos. Un parámetro `max_bytes` inválido es un error de configuración ValueError, antes de leer.
+
+Los tipos de lectura son estructuras del formato, no el modelo normalizado del #7. No se evalúa certeza de identidad, igualdad entre IDs/archivos, antigüedad de versiones, ni riesgos de reproducibilidad. No se conecta a la CLI: esa integración pertenece a un issue posterior.
+
+### Comprobación local del lector
+
+Desde la raíz, después de la instalación local documentada:
+
+```powershell
+& .\.venv\Scripts\python.exe -m pytest -q
+& .\.venv\Scripts\python.exe -m ruff check src tests
+& .\.venv\Scripts\python.exe -m ruff format --check src tests
+& .\.venv\Scripts\python.exe -c "from modlock.meteoric import read_meteoric; r = read_meteoric('docs/research/issue-2/fixtures/valid/03-metadata.json'); print(len(r.records), len(r.warnings))"
+# El smoke imprime 2 0: separador + mod, sin advertencias en ese fixture.
+```
+
+La suite incluye los 19 fixtures íntegros del manifiesto de #2: seis válidos, dos anómalos aceptados con advertencia y once negativos rechazados. Se comprueban repetibilidad y bytes intactos en éxito/error. Los casos adicionales prueban tipos sin coerción, desconocidos en cuatro niveles, faltantes frente a vacíos, Unicode/BOM/UTF-16, duplicación de claves, números no finitos, anidamiento, rutas y límites de lectura. El fallo de permisos se simula mediante monkeypatch: no se cambiaron ACL de Windows. Un rastreo de Path.open comprueba que se abre solo la entrada como rb y no las referencias a archivos o plugins.
+
+Resultados finales ejecutados el 22-11-2026, Windows 11 x64 / CPython 3.12.14:
+
+| Verificación | Resultado |
+|---|---|
+| Suite completa (incluye las ocho pruebas de CLI del setup) | **64 tests OK** en `.venv` y `.venv/clean` |
+| Ruff `check src tests` | OK en ambos entornos |
+| Ruff `format --check src tests` | Seis archivos formateados |
+| Reinstalación editable sin build isolation/dependencias en el segundo entorno | OK; `pip check` sin requisitos rotos en ambos |
+| Smoke documentado con fixture válido | `2 0` |
+| Importación y lectura desde directorio ajeno al repositorio con el segundo intérprete | OK |
+| Dependencias y licencia propia | Sin cambios; solo biblioteca estándar para el lector |
+
+Un primer test asumía que 2.000 arrays anidados siempre provocarían un límite del decodificador; en este entorno se decodificaron y fallaron correctamente como registro de tipo inválido. La prueba final admite ambos diagnósticos controlados, sin exigir un límite interno idéntico entre decodificadores. Se añadió también un caso de ruta con NUL: se convierte en error `io` sin exponer la ruta.
+
+No hay prueba manual obligatoria de usuario ni se solicita una lista privada. No se ha probado exportación desde una instancia real de MO2; el corpus y los datos nuevos son sintéticos. No se inicia #7 ni se fusiona la PR del #6 sin otra autorización.
