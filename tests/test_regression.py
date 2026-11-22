@@ -9,6 +9,9 @@ import pytest
 from typer.testing import CliRunner
 
 from modlock.cli import app
+from modlock.comparison import compare_exports
+from modlock.identity import normalize_export
+from modlock.meteoric import read_meteoric
 
 CORPUS = Path(__file__).resolve().parents[1] / "docs/research/issue-1/fixtures"
 
@@ -49,3 +52,12 @@ def test_comparison_and_reports_need_no_network(
         )
     assert result.exit_code == 0, result.output
     assert json.loads(result.stdout)["summary"]["unchanged"] == 1
+
+
+def test_mutated_nested_model_cannot_silently_disagree_with_raw_data() -> None:
+    fixture = CORPUS / "01-identical/old.json"
+    source = normalize_export(read_meteoric(fixture))
+    mod = next(r for r in source.records if r.original.kind == "mod")
+    mod.original.raw["general"]["version"] = "mutated without renormalization"
+    with pytest.raises(ValueError, match="inconsistent"):
+        compare_exports(source, source, context="synthetic")
