@@ -166,3 +166,5 @@ Resultados finales ejecutados el 22-11-2026, Windows 11 x64 / CPython 3.12.14:
 Un primer test asumía que 2.000 arrays anidados siempre provocarían un límite del decodificador; en este entorno se decodificaron y fallaron correctamente como registro de tipo inválido. La prueba final admite ambos diagnósticos controlados, sin exigir un límite interno idéntico entre decodificadores. Se añadió también un caso de ruta con NUL: se convierte en error `io` sin exponer la ruta.
 
 No hay prueba manual obligatoria de usuario ni se solicita una lista privada. No se ha probado exportación desde una instancia real de MO2; el corpus y los datos nuevos son sintéticos. No se inicia #7 ni se fusiona la PR del #6 sin otra autorización.
+
+Estado posterior: tras integrar la PR #24, el propietario autorizó #7. El [modelo de identidad e incertidumbre](../IDENTITY.md) se implementa separado del lector; las reglas y los resultados anteriores conservan el alcance histórico de #6.

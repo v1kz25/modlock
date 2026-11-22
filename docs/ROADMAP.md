@@ -15,22 +15,22 @@ El [spike de diferenciación](research/issue-1/REPORT.md), integrado por la PR #
 
 El 22-11-2026 el propietario autorizó #2 como investigación limitada; su [formato y fixtures](formats/meteoric-json-v1.md) se integraron por la PR #22. Los criterios de #1 y #2 se revisaron y sus resultados se reprodujeron antes de cerrarlos con evidencia.
 
-Después, el propietario decidió continuar investigando modlock como herramienta independiente de auditoría read-only, complementaria a Meteoric, y autorizó #3 (setup). La PR #23 se fusionó con su aprobación; se cerró #3 con evidencia de sus criterios. Su instrucción posterior «Fusiona y sigue» autoriza el siguiente issue recomendado **#6: lector read-only**, pese a la condición heredada de no comenzar con CONTRIBUIR. Esta decisión no cambia el veredicto histórico ni afirma demanda o validación técnica del producto. No autoriza #7, motor, auditorías ni MVP. Cada tarea posterior y cada fusión requieren su propia autorización y PR.
+Después, el propietario decidió continuar investigando modlock como herramienta independiente de auditoría read-only, complementaria a Meteoric, y autorizó #3 y después #6, pese a la condición heredada de CONTRIBUIR. Se integraron las PRs #23/#24 con su aprobación y se cerraron ambos issues con evidencia. Su instrucción posterior «sigue con la siguiente tarea» autoriza **#7: identidad e incertidumbre**. Estas decisiones no cambian el veredicto histórico ni afirman demanda o validación técnica del producto. No autorizan matching, motor, auditorías ni MVP. Cada tarea posterior y cada fusión requieren su propia autorización y PR.
 
 ## Versiones propuestas y condiciones de salida
 
 | Hipótesis | Implementado | Previsto | Dependencias y salida de fase |
 |---|---|---|---|
-| v0.1.0 experimental | #1/#2 y setup #3 integrados. #6 prepara lector interno y pruebas para revisión; sin identidad normalizada, motor ni auditorías | #1–#4 y #6–#10: validar diferenciación y formato, setup, lectura, identidad, diff conservador, JSON/Markdown, calidad y prerelease revisable | Autorizado solo #6. Cadena siguiente: #6→#7→#4→#8→#9→#10, sujeta a autorización. Salida: un formato real, incertidumbre preservada, pruebas y smoke Windows ejecutados, licencias revisadas, instalación/artefactos reproducidos; publicación solo autorizada por el propietario |
+| v0.1.0 experimental | #1/#2, setup #3 y lector #6 integrados. #7 prepara modelo y pruebas para revisión; sin motor ni auditorías | #1–#4 y #6–#10: validar diferenciación y formato, setup, lectura, identidad, diff conservador, JSON/Markdown, calidad y prerelease revisable | Autorizado solo #7. Cadena siguiente: #7→#4→#8→#9→#10, sujeta a autorización. Salida: un formato real, incertidumbre preservada, pruebas y smoke Windows ejecutados, licencias revisadas, instalación/artefactos reproducidos; publicación solo autorizada por el propietario |
 | v0.2.0 experimental | Nada | #11–#15: señales de reproducibilidad, orden/metadatos, snapshots, informes y corpus ampliados | v0.1 validada con feedback y necesidad de cada incremento; #11 depende de #6–#10, #12 de #7/#4, #13 de #6–#8, #14 de #8, #15 de los demás v0.2. Salida: riesgos verificables con unknown, compatibilidad de informes, determinismo, corpus Windows y smoke del artefacto; segunda prerelease solo con aprobación |
 | v1.0.0 estable | Nada | #16–#19: contrato estable de CLI/informes, exportaciones y seguridad read-only, distribución/mantenimiento, candidato estable | Feedback v0.2, matriz de formato y corpus, estrategia de distribución y todos los bloqueantes resueltos. Salida: contrato y pruebas de compatibilidad, entradas intactas y adversariales, instalación limpia, hashes reales, licencias/avisos, notas y revisión humana antes de tag/release |
 | Posterior a v1.0, sin compromiso | Nada | #20: spike de segundo formato | Demanda, muestras y licencia comprobadas; decisión continuar/rechazar antes de cualquier parser |
 
-Los issues #1/#2/#3 están cerrados por criterios cumplidos, con evidencia en las PRs fusionadas #21/#22/#23; no representan versiones publicadas. #5 fue una PR documental de Gitflow. #6 queda para revisión; no se crean tags ni releases en esta tarea.
+Los issues #1/#2/#3/#6 están cerrados por criterios cumplidos, con evidencia en las PRs fusionadas #21/#22/#23/#24; no representan versiones publicadas. #5 fue una PR documental de Gitflow. #7 queda para revisión; no se crean tags ni releases en esta tarea.
 
 ## Decisiones pendientes y riesgos
 
-- La decisión del propietario permite investigar una herramienta complementaria, pero la autorización vigente se limita a #6. #4 y #7–#20 no están autorizados. La recomendación técnica de contribuir permanece como antecedente, sin sustituirla por evidencia de demanda inexistente.
+- La decisión del propietario permite investigar una herramienta complementaria, pero la autorización vigente se limita a #7. #4 y #8–#20 no están autorizados. La recomendación técnica de contribuir permanece como antecedente, sin sustituirla por evidencia de demanda inexistente.
 - La auditoría propuesta en #11 sería la diferenciación principal; posponerla hasta v0.2 mientras v0.1 replica comparación existente exige justificación si se retoma el producto.
 - Delimitar #4/#12 (orden), #8/#13 (snapshots) y #8/#14 (informes) para evitar duplicación. Las puertas de distribución #10/#15/#18 verifican madurez distinta, sin garantizar la siguiente fase.
 - La licencia propia sigue pendiente. Las dependencias del setup y sus licencias se registran en [DEPENDENCIES.md](DEPENDENCIES.md); formatos cambiantes, matching ambiguo y GPL de terceros siguen siendo riesgos.
@@ -38,7 +38,7 @@ Los issues #1/#2/#3 están cerrados por criterios cumplidos, con evidencia en la
 
 ## Principio de alcance
 
-La tarea actual autoriza exclusivamente el lector del issue #6 de modlock. No desarrollar fases siguientes ni otros repositorios. Toda integración requiere revisión explícita y Gitflow según DEVELOPMENT.md.
+La tarea actual autoriza exclusivamente el modelo del issue #7 de modlock. No desarrollar fases siguientes ni otros repositorios. Toda integración requiere revisión explícita y Gitflow según DEVELOPMENT.md.
 
 ## Etiquetas de fase
 

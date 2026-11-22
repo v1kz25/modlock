@@ -1,0 +1,119 @@
+[
+  {
+    "index": 0,
+    "state": "not_applicable",
+    "references": [],
+    "reasons": [],
+    "conflicting_indices": []
+  },
+  {
+    "index": 1,
+    "state": "referenced",
+    "references": [
+      [
+        101,
+        1001
+      ]
+    ],
+    "reasons": [],
+    "conflicting_indices": []
+  },
+  {
+    "index": 2,
+    "state": "referenced",
+    "references": [
+      [
+        202,
+        2001
+      ]
+    ],
+    "reasons": [],
+    "conflicting_indices": []
+  },
+  {
+    "index": 3,
+    "state": "referenced",
+    "references": [
+      [
+        202,
+        2002
+      ]
+    ],
+    "reasons": [],
+    "conflicting_indices": []
+  },
+  {
+    "index": 4,
+    "state": "ambiguous",
+    "references": [
+      [
+        303,
+        3001
+      ]
+    ],
+    "reasons": [
+      "duplicate_reference"
+    ],
+    "conflicting_indices": [
+      5
+    ]
+  },
+  {
+    "index": 5,
+    "state": "ambiguous",
+    "references": [
+      [
+        303,
+        3001
+      ]
+    ],
+    "reasons": [
+      "duplicate_reference"
+    ],
+    "conflicting_indices": [
+      4
+    ]
+  },
+  {
+    "index": 6,
+    "state": "ambiguous",
+    "references": [],
+    "reasons": [
+      "incomplete_file_list",
+      "missing_file_reference",
+      "missing_page_id",
+      "name_collision"
+    ],
+    "conflicting_indices": [
+      7
+    ]
+  },
+  {
+    "index": 7,
+    "state": "ambiguous",
+    "references": [],
+    "reasons": [
+      "incomplete_file_list",
+      "missing_file_reference",
+      "missing_page_id",
+      "name_collision"
+    ],
+    "conflicting_indices": [
+      6
+    ]
+  },
+  {
+    "index": 8,
+    "state": "incomplete",
+    "references": [
+      [
+        505,
+        5001
+      ]
+    ],
+    "reasons": [
+      "incomplete_file_list"
+    ],
+    "conflicting_indices": []
+  }
+]
