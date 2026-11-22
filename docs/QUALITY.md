@@ -1,0 +1,11 @@
+# Calidad experimental #9
+
+Corpus propio y sintético: los diez pares del spike #1, los 19 archivos válidos/anómalos/inválidos del #2, golden del modelo/motor y casos de CLI/entradas hostiles. No se usan listas privadas ni archivos reales de juego. No se certifica otra versión del formato que la estructura fijada al commit Meteoric estudiado; tampoco integridad o compatibilidad de instalaciones.
+
+Comandos locales del entorno: pytest completo, Ruff check, Ruff format --check y pip check, según DEVELOPMENT.md. La regresión atraviesa CLI→lector→modelo→motor→JSON para los diez pares, conservando cada índice/dato por lado y SHA-256 de los inputs. Una prueba bloquea socket/socket.create_connection durante comparación/informe. JSON/Markdown, permisos simulados, Unicode, errores, duplicados y falsos positivos tienen pruebas específicas. No se ha elegido un typechecker adicional en #3 ni se añade ahora.
+
+CI usa un runner **estándar windows-latest** en este repo público, x64/CPython 3.12. Acciones oficiales fijadas por SHA, contents:read, sin credenciales persistidas, secretos, cachés ni upload de artefactos. Instala wheels con hashes y ejecuta suite/lint/smoke real. Solo descarga dependencias durante setup, no durante las comparaciones. No se habilita infraestructura de pago o runners grandes. [GitHub documenta que los runners estándar son gratuitos para repos públicos](https://docs.github.com/en/billing/concepts/product-billing/github-actions); si el repo fuera privado el job no se ejecuta. El runner es Windows Server de GitHub, no sustituye la prueba local de Windows 11.
+
+La ejecución real sobre SHA de PR debe constar en su descripción antes de fusionar #9. No se declara PASS por existir YAML. Los resultados locales y CI se registran por separado. No requiere prueba manual de usuario; exportación desde MO2 real y matriz de ACL/symlinks continúan fuera de esta cobertura.
+
+La regresión detectó una frontera mutable: las dataclasses contienen diccionarios modificables. El motor vuelve a validar los originales decodificados en memoria con las reglas existentes del lector y recalcula la evidencia, para rechazar modelos cuyo raw y campos tipados ya no coinciden. No relee archivos ni cambia el esquema del parser. Una prueba evita que esa divergencia produzca informes silenciosamente incoherentes.

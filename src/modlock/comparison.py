@@ -10,7 +10,7 @@ from modlock.identity import (
     NormalizedRecord,
     normalize_export,
 )
-from modlock.meteoric import MeteoricExport
+from modlock.meteoric import MeteoricExport, _record
 
 type Category = Literal[
     "added", "removed", "modified", "reordered", "unchanged", "ambiguous", "separator"
@@ -38,12 +38,17 @@ def _checked(export: NormalizedExport) -> NormalizedExport:
     for index, record in enumerate(export.records):
         if record.original.index != index or record.original.order != index:
             raise ValueError("Normalized record positions must be consecutive.")
+    # Revalidate decoded originals in memory: callers can mutate nested dictionaries
+    # even though the dataclasses themselves are frozen. Reuse the reader's rules.
+    parsed, warnings = [], []
+    section = "Unsectioned"
+    for index, record in enumerate(export.records):
+        item = _record(record.original.raw, index, section, warnings)
+        parsed.append(item)
+        if item.kind == "separator":
+            section = item.separator_name
     rebuilt = normalize_export(
-        MeteoricExport(
-            export.source,
-            tuple(r.original for r in export.records),
-            export.read_warnings,
-        )
+        MeteoricExport(export.source, tuple(parsed), tuple(warnings))
     )
     if rebuilt != export:
         raise ValueError(
