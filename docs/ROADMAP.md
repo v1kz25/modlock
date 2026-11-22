@@ -48,3 +48,7 @@ La tarea actual autoriza exclusivamente el modelo del issue #7 de modlock. No de
 4. Estabilización: `phase:quality`.
 5. Versión pública: `phase:release`.
 6. Mejoras posteriores: `phase:future`.
+
+## Autorización posterior para v0.1.0
+
+El propietario autoriza completar #4, #8, #9 y #10, fusionar sus PRs tras verificaciones y publicar una prerelease experimental. Se avisa si aparece una prueba manual necesaria. CONTRIBUIR permanece como conclusión histórica; esto no valida demanda ni autoriza v0.2. El trabajo sigue secuencialmente en una rama/PR por issue y la publicación se prepara en release/0.1.0a1. La licencia propia requiere decisión expresa según #10. Los párrafos anteriores registran autorizaciones históricas más limitadas, sustituidas solo para este alcance.

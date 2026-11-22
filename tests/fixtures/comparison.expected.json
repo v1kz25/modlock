@@ -1,0 +1,5 @@
+[
+  {"category": "modified", "base": 0, "head": 1, "fields": ["order", "version"]},
+  {"category": "reordered", "base": 1, "head": 0, "fields": ["order"]},
+  {"category": "added", "base": null, "head": 2, "fields": []}
+]
