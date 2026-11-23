@@ -50,7 +50,8 @@ def _fields(
             fields.append(name)
     a, b = old.general.get("version"), new.general.get("version")
     if a != b:
-        fields.append("version" if a and b else "version_metadata")
+        known_versions = a is not None and b is not None and a.strip() and b.strip()
+        fields.append("version" if known_versions else "version_metadata")
     excluded = {
         "order",
         "separatorName",

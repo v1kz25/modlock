@@ -13,3 +13,9 @@ Adiciones/eliminaciones describen referencias declaradas ausentes dentro del con
 `reordered` usa posición relativa entre pares establecidos, no desplazamientos absolutos por inserciones/separadores. Un mod puede tener flags de orden y de modificación a la vez (categoría `modified`). Las entradas siguen orden base, luego registros head no emparejados; motivos/campos estables. Los separadores se conservan por lado sin emparejarlos por nombre. No se pierden duplicados ni se fusionan mods.
 
 Pruebas sintéticas: contexto ausente, cambio de nombre/versión/metadatos/activación, referencia cambiada, inversiones, añadidos/eliminados, orden relativo, incertidumbre, conteos, determinismo e input inválido. Comandos: `python -m pytest -q`, `python -m ruff check src tests`, `python -m ruff format --check src tests` dentro del entorno local. No requiere prueba manual de usuario ni listas privadas. No se añade dependencia ni se cambia licencia propia en #4.
+
+## Ampliación #12
+
+Golden independiente `tests/fixtures/comparison-extended.expected.json`: rotación de tres pares con metadata/versión/activación simultáneas, hueco incierto, referencia duplicada, cambio de fileid, inserción sin reordenación falsa y versión whitespace. Cada lado conserva exactamente todos sus índices. Una versión solo whitespace se considera metadata insuficiente (version_metadata); no se reescribe el valor original ni se interpreta SemVer. Nombres/plugins/tags/newestVersion no prueban conflictos de carga o compatibilidad. El matching no cambia: duplicados/identidades inciertas no se emparejan, ni siquiera al reordenar.
+
+Windows 11 x64 / CPython 3.12.14: suite completa 145 tests, Ruff check y format --check OK. Sin cambios de dependencias ni formato público. La corrección reduce una afirmación excesiva (whitespace como versión conocida), con prueba golden; no introduce un comparador de versiones ni nuevas heurísticas.
