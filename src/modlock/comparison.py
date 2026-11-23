@@ -1,6 +1,5 @@
 """Conservative, deterministic comparison of two normalized in-memory exports."""
 
-from copy import deepcopy
 from dataclasses import dataclass
 from typing import Literal
 
@@ -8,9 +7,8 @@ from modlock.identity import (
     FileReference,
     NormalizedExport,
     NormalizedRecord,
-    normalize_export,
+    checked_export,
 )
-from modlock.meteoric import MeteoricExport, _record
 
 type Category = Literal[
     "added", "removed", "modified", "reordered", "unchanged", "ambiguous", "separator"
@@ -30,31 +28,6 @@ class Change:
 class Comparison:
     context: str | None
     changes: tuple[Change, ...]
-
-
-def _checked(export: NormalizedExport) -> NormalizedExport:
-    if not isinstance(export, NormalizedExport):
-        raise ValueError("Expected a normalized Meteoric export.")
-    for index, record in enumerate(export.records):
-        if record.original.index != index or record.original.order != index:
-            raise ValueError("Normalized record positions must be consecutive.")
-    # Revalidate decoded originals in memory: callers can mutate nested dictionaries
-    # even though the dataclasses themselves are frozen. Reuse the reader's rules.
-    parsed, warnings = [], []
-    section = "Unsectioned"
-    for index, record in enumerate(export.records):
-        item = _record(record.original.raw, index, section, warnings)
-        parsed.append(item)
-        if item.kind == "separator":
-            section = item.separator_name
-    rebuilt = normalize_export(
-        MeteoricExport(export.source, tuple(parsed), tuple(warnings))
-    )
-    if rebuilt != export:
-        raise ValueError(
-            "Identity evidence is inconsistent; normalize the reader result again."
-        )
-    return deepcopy(export)
 
 
 def _key(record: NormalizedRecord) -> tuple[FileReference, ...]:
@@ -112,7 +85,7 @@ def compare_exports(
         raise ValueError(
             "Context must be a non-empty same-game/export-lineage assertion."
         )
-    old, new = _checked(base), _checked(head)
+    old, new = checked_export(base), checked_export(head)
     old_mods = [r for r in old.records if r.original.kind == "mod"]
     new_mods = [r for r in new.records if r.original.kind == "mod"]
     left = {_key(r): r for r in old_mods if r.identity.state == "referenced"}

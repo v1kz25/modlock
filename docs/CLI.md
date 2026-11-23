@@ -20,3 +20,7 @@ Sin `--output`, escribe a stdout; con `--output`, crea un archivo nuevo de forma
 | 2 | Uso inválido de CLI, argumento u opción no soportados |
 
 `--help` y `--version` siguen disponibles; sin argumentos se muestra ayuda con 0. No hay descarga de mods, resolución de conflictos, autenticación ni conclusión sobre compatibilidad. Pruebas: `python -m pytest -q`, Ruff check/format desde el entorno local. Corpus sintético, golden JSON, JSON/Markdown repetibles, contexto ausente, warnings, escaping hostil, archivos intactos y fallos/códigos. No se necesita una prueba manual de usuario para #8.
+
+## Extensión opcional #11 (desarrollo v0.2)
+
+`--audit` añade señales de reproducibilidad a ambos lados, sin cambiar el matching ni el JSON sin flag. Ver [contrato y límites](AUDIT.md). La extensión es opt-in y desconocidos siguen unknown. No implica auditoría de archivos instalados.
