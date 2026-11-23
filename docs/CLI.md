@@ -24,3 +24,5 @@ Sin `--output`, escribe a stdout; con `--output`, crea un archivo nuevo de forma
 ## Extensión opcional #11 (desarrollo v0.2)
 
 `--audit` añade señales de reproducibilidad a ambos lados, sin cambiar el matching ni el JSON sin flag. Ver [contrato y límites](AUDIT.md). La extensión es opt-in y desconocidos siguen unknown. No implica auditoría de archivos instalados.
+
+Comparación de archivos guardados como snapshots, repetibilidad/reversibilidad y privacidad: [SNAPSHOTS.md](SNAPSHOTS.md). No se introduce formato nuevo ni comando de restauración.
