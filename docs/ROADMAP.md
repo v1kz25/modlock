@@ -1,6 +1,6 @@
 # Roadmap — modlock
 
-v0.1 dispone de una comparación experimental limitada; #10 prepara la primera prerelease 0.1.0a1. Las versiones siguientes son hipótesis condicionadas a la validación y a decisiones del propietario, no compromisos de construir todas las funciones.
+v0.1.0a1 experimental publicada; #1–#4 y #6–#10 completados. v0.2 se desarrolla por tareas autorizadas y dependencias. Las versiones siguientes son hipótesis condicionadas a la validación y a decisiones del propietario, no compromisos de construir todas las funciones.
 
 1. **Validación técnica / PoC**: validar el hueco real y dependencias
 2. **Configuración inicial**: crear base mínima verificable
@@ -30,7 +30,7 @@ Evidencia: PRs fusionadas #21–#28, issues #1/#2/#3/#6/#7/#4/#8/#9 completados.
 
 ## Decisiones pendientes y riesgos
 
-- La decisión del propietario permite investigar una herramienta complementaria, pero la autorización vigente completa v0.1 (#4/#8/#9/#10) y permite su prerelease. #11–#20 siguen sin autorización. La recomendación técnica de contribuir permanece como antecedente, sin sustituirla por evidencia de demanda inexistente.
+- La decisión del propietario permite investigar una herramienta complementaria, pero la autorización vigente completa v0.1 (#4/#8/#9/#10) y permite su prerelease. La instrucción posterior del propietario autoriza trabajar los issues posibles y fusionar/publicar tras controles; detener los pasos que requieran prueba manual o decisión pendiente. La recomendación técnica de contribuir permanece como antecedente, sin sustituirla por evidencia de demanda inexistente.
 - La auditoría propuesta en #11 sería la diferenciación principal; posponerla hasta v0.2 mientras v0.1 replica comparación existente exige justificación si se retoma el producto.
 - Delimitar #4/#12 (orden), #8/#13 (snapshots) y #8/#14 (informes) para evitar duplicación. Las puertas de distribución #10/#15/#18 verifican madurez distinta, sin garantizar la siguiente fase.
 - La licencia propia MIT fue decidida expresamente por el propietario para #10. Las dependencias del setup y sus licencias se registran en [DEPENDENCIES.md](DEPENDENCIES.md); formatos cambiantes, matching ambiguo y GPL de terceros siguen siendo riesgos.
@@ -38,7 +38,7 @@ Evidencia: PRs fusionadas #21–#28, issues #1/#2/#3/#6/#7/#4/#8/#9 completados.
 
 ## Principio de alcance
 
-La tarea actual termina v0.1 mediante issues separados y Gitflow, con fusiones/publicación autorizadas tras verificaciones. No desarrollar v0.2 ni otros repositorios. Avisar si aparece una prueba manual necesaria.
+La tarea actual continúa desde #11 por dependencias, una rama/PR por issue, con fusiones/versiones autorizadas tras verificaciones. No trabajar otros repositorios; avisar ante prueba manual o decisión pendiente. No dar por satisfechas las puertas de feedback/revisión humana con datos inventados.
 
 ## Etiquetas de fase
 
@@ -52,3 +52,7 @@ La tarea actual termina v0.1 mediante issues separados y Gitflow, con fusiones/p
 ## Autorización posterior para v0.1.0
 
 El propietario autoriza completar #4, #8, #9 y #10, fusionar sus PRs tras verificaciones y publicar una prerelease experimental. Se avisa si aparece una prueba manual necesaria. CONTRIBUIR permanece como conclusión histórica; esto no valida demanda ni autoriza v0.2. El trabajo sigue secuencialmente en una rama/PR por issue y la publicación se prepara en release/0.1.0a1. El propietario decidió MIT expresamente para #10. Los párrafos anteriores registran autorizaciones históricas más limitadas, sustituidas solo para este alcance.
+
+## Autorización posterior para continuar
+
+El 23-11-2026 el propietario autorizó #11 y después todos los issues posibles, con fusiones/versiones tras controles mientras no necesite hacer pruebas manuales. #11 aporta señales opt-in; los criterios de cada issue y las puertas de feedback/revisión humana siguen vigentes. La autorización no equivale a evidencia de demanda, feedback de usuarios o validación estable.

@@ -2,7 +2,7 @@
 
 ## Estado
 
-#4 integrado; #8 incorpora CLI compare e informes JSON/Markdown. [Comandos y códigos actuales](CLI.md). Las secciones del setup registran sus verificaciones históricas; la suite actual se verifica en cada PR. La autorización vigente cubre #4/#8/#9/#10 y publicación experimental, sin habilitar v0.2.
+#4 integrado; #8 incorpora CLI compare e informes JSON/Markdown. [Comandos y códigos actuales](CLI.md). Las secciones del setup registran sus verificaciones históricas; la suite actual se verifica en cada PR. La autorización posterior permite continuar desde #11 por dependencias, fusionar/publicar tras controles y avisar ante prueba manual necesaria.
 
 Estado actual: #3/#6/#7/#4/#8/#9 integrados. Lector, identidad, motor conservador, CLI e informes disponibles; #10 prepara distribución 0.1.0a1 con MIT autorizada. La evidencia histórica de #3 se mantiene abajo identificada como tal. CONTRIBUIR permanece como veredicto del spike. [Instalación del artefacto y reproducción](RELEASE.md).
 
@@ -73,7 +73,7 @@ La tabla anterior registra el setup #3. La validación del lector #6 se describe
 
 ## Después de v0.1, sin autorización automática
 
-Terminar #10 y publicar la prerelease autorizada agota este alcance. No iniciar v0.2. La siguiente dependencia propuesta es #11, condicionada a revisar necesidad, feedback y autorización del propietario.
+v0.1.0a1 ya está publicada y #10 cerrado. La instrucción del 23-11-2026 autoriza continuar los issues posibles desde #11, conservando puertas de feedback/revisión humana y aviso ante prueba manual. Ver AUDIT.md para la extensión opt-in de señales.
 
 ## Gitflow
 

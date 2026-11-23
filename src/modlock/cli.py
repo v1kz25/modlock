@@ -8,6 +8,7 @@ from typing import Annotated
 import typer
 
 from modlock import __version__
+from modlock.audit import audit_pair
 from modlock.comparison import compare_exports
 from modlock.identity import normalize_export
 from modlock.meteoric import ReaderError, read_meteoric
@@ -43,6 +44,10 @@ class ReportFormat(StrEnum):
 def compare(
     base: Path,
     head: Path,
+    audit: Annotated[
+        bool,
+        typer.Option("--audit", help="Include experimental reproducibility signals."),
+    ] = False,
     context: Annotated[
         str | None,
         typer.Option(
@@ -65,6 +70,8 @@ def compare(
         )
         result = compare_exports(old, new, context=context)
         data = report_data(result, old.read_warnings, new.read_warnings)
+        if audit:
+            data["audit"] = audit_pair(old, new)
         text = (
             render_json(data) if format == ReportFormat.json else render_markdown(data)
         )

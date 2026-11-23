@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Literal
 
-from modlock.meteoric import MeteoricExport, MeteoricRecord, ReadWarning
+from modlock.meteoric import MeteoricExport, MeteoricRecord, ReadWarning, _record
 
 type IdentityState = Literal["referenced", "incomplete", "ambiguous", "not_applicable"]
 type IdentityReason = Literal[
@@ -147,3 +147,28 @@ def normalize_export(export: MeteoricExport) -> NormalizedExport:
             )
         records.append(NormalizedRecord(record, identity))
     return NormalizedExport(source.source, tuple(records), source.warnings)
+
+
+def checked_export(export: NormalizedExport) -> NormalizedExport:
+    if not isinstance(export, NormalizedExport):
+        raise ValueError("Expected a normalized Meteoric export.")
+    for index, record in enumerate(export.records):
+        if record.original.index != index or record.original.order != index:
+            raise ValueError("Normalized record positions must be consecutive.")
+    # Revalidate decoded originals in memory: callers can mutate nested dictionaries
+    # even though the dataclasses themselves are frozen. Reuse the reader's rules.
+    parsed, warnings = [], []
+    section = "Unsectioned"
+    for index, record in enumerate(export.records):
+        item = _record(record.original.raw, index, section, warnings)
+        parsed.append(item)
+        if item.kind == "separator":
+            section = item.separator_name
+    rebuilt = normalize_export(
+        MeteoricExport(export.source, tuple(parsed), tuple(warnings))
+    )
+    if rebuilt != export:
+        raise ValueError(
+            "Identity evidence is inconsistent; normalize the reader result again."
+        )
+    return deepcopy(export)
