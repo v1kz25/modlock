@@ -2,9 +2,16 @@
 
 ## Estado
 
-#4 integrado; #8 incorpora CLI compare e informes JSON/Markdown. [Comandos y códigos actuales](CLI.md). Las secciones del setup registran sus verificaciones históricas; la suite actual se verifica en cada PR. La autorización posterior permite continuar desde #11 por dependencias, fusionar/publicar tras controles y avisar ante prueba manual necesaria.
+0.2.0a2 experimental publicada, con auditoría opt-in, CLI/informes, matriz y
+corrección Windows. #11–#15/#17/#18/#20 completados; #20 rechaza por ahora el
+formato aislado investigado, no implementa un parser. [Contrato público](PUBLIC-CONTRACT.md)
+preparado en #16 con feedback del propietario recibido el 23-11-2026. #19 debe
+preparar el candidato y registrar revisión humana antes de tag estable.
 
-Estado actual: #3/#6/#7/#4/#8/#9 integrados. Lector, identidad, motor conservador, CLI e informes disponibles; #10 prepara distribución 0.1.0a1 con MIT autorizada. La evidencia histórica de #3 se mantiene abajo identificada como tal. CONTRIBUIR permanece como veredicto del spike. [Instalación del artefacto y reproducción](RELEASE.md).
+La autorización vigente permite continuar/fusionar/publicar tras controles,
+con aviso ante prueba manual necesaria. CONTRIBUIR histórico y límites de
+Windows/formato permanecen. Las secciones del setup de abajo son evidencia
+histórica explícita; verificaciones actuales en PRs y [SUPPORT.md](SUPPORT.md).
 
 ## Entorno comprobado y elección de versiones
 

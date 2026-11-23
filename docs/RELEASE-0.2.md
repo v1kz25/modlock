@@ -1,4 +1,4 @@
-# Segunda prerelease experimental 0.2.0a1 — #15
+# Segunda prerelease experimental 0.2.0a2 — #18
 
 ## Alcance y decisión
 
@@ -18,8 +18,8 @@ actualizaciones por nombres/IDs cambiados. Ver [límites de CLI](CLI.md).
 
 Desde la prerelease de GitHub, guardar en una carpeta local nueva:
 
-- `modlock-0.2.0a1-py3-none-any.whl`: paquete propio y licencias, sin dependencias.
-- `modlock-0.2.0a1.tar.gz`: fuente, docs, pruebas y fixtures sintéticos.
+- `modlock-0.2.0a2-py3-none-any.whl`: paquete propio y licencias, sin dependencias.
+- `modlock-0.2.0a2.tar.gz`: fuente, docs, pruebas y fixtures sintéticos.
 - `requirements-runtime.txt`: 13 wheels de runtime fijadas por versión/SHA-256,
   específicamente comprobadas en Windows x64 / CPython 3.12.
 - `THIRD_PARTY_NOTICES.md`, `base.json`, `head.json`, `SHA256SUMS`.
@@ -49,7 +49,7 @@ PATH, políticas ni instalar globalmente. No hace falta activar el entorno.
 & $python -m venv .venv
 & .\.venv\Scripts\python.exe -m pip --isolated download --only-binary=:all: --require-hashes -r requirements-runtime.txt --dest .venv/wheels
 & .\.venv\Scripts\python.exe -m pip --isolated install --no-index --find-links .venv/wheels --only-binary=:all: --require-hashes -r requirements-runtime.txt
-& .\.venv\Scripts\python.exe -m pip --isolated install --no-deps .\modlock-0.2.0a1-py3-none-any.whl
+& .\.venv\Scripts\python.exe -m pip --isolated install --no-deps .\modlock-0.2.0a2-py3-none-any.whl
 & .\.venv\Scripts\python.exe -m pip check
 & .\.venv\Scripts\modlock.exe --version
 & .\.venv\Scripts\modlock.exe --help
@@ -96,7 +96,7 @@ Para probar la distribución fuente con herramientas ya instaladas y sin
 resolver builds ocultos:
 
 ```powershell
-& .\.venv\Scripts\python.exe -m pip --isolated install --no-build-isolation --no-deps RUTA\modlock-0.2.0a1.tar.gz
+& .\.venv\Scripts\python.exe -m pip --isolated install --no-build-isolation --no-deps RUTA\modlock-0.2.0a2.tar.gz
 & .\.venv\Scripts\python.exe -m pip check
 & .\.venv\Scripts\python.exe -m pytest -q
 & .\.venv\Scripts\python.exe -m ruff check src tests
@@ -112,8 +112,8 @@ sintéticos; no hay prueba manual obligatoria del propietario para este alcance.
 
 ## Publicación y Gitflow
 
-PR #15 hacia develop, controles reales y fusión autorizada. Crear rama
-`release/0.2.0a1` desde develop actualizado y PR de estabilización hacia main.
+PR #18 hacia develop, controles reales y fusión autorizada. Crear rama
+`release/0.2.0a2` desde develop actualizado y PR de estabilización hacia main.
 La prerelease se etiqueta en el SHA revisado de release, sin fusionar el
 experimento en main (reservada a versiones estables). Esa PR queda como draft
 para una futura decisión de estabilización, sin auto-merge ni borrar ramas.
@@ -125,3 +125,5 @@ de publicación. CI usa runner estándar gratuito en repo público. Coste adicio
 obligatorio 0 €. No presentar v0.2 como estable: #16 exige feedback y #19 revisión humana antes del tag estable.
 
 Migración desde v0.1: [MIGRATION-0.2.md](MIGRATION-0.2.md). Cambia presentación Markdown, audit es opt-in; JSON predeterminado conserva su schema. El typecheck usa las 24 distribuciones del lock de desarrollo, no el lock runtime de 13.
+
+0.2.0a2 corrige el symlink roto de salida demostrado en #17 y añade comprobaciones de contenido de wheel/cierre runtime. Las releases anteriores mantienen sus assets y nota del límite; no se reemplazan sus hashes. Mantenimiento en SUPPORT.md.

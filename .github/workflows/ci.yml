@@ -44,6 +44,22 @@ jobs:
           ./.venv/Scripts/python.exe -m ruff format --check src tests
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           ./.venv/Scripts/python.exe -m mypy src/modlock
+      - name: Noneditable wheel and full native regression
+        run: |
+          $env:SOURCE_DATE_EPOCH = '315532800'
+          New-Item -ItemType Directory -Path .venv/wheel -Force | Out-Null
+          ./.venv/Scripts/python.exe -c "from flit_core import buildapi; print(buildapi.build_wheel('.venv/wheel'))"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $wheelFiles = @(Get-ChildItem .venv/wheel/*.whl)
+          if ($wheelFiles.Count -ne 1) { throw 'Expected one project wheel' }
+          $wheelPath = $wheelFiles[0].FullName
+          ./.venv/Scripts/python.exe -m pip --isolated install --no-index --no-deps --force-reinstall $wheelPath
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          ./.venv/Scripts/python.exe -c "import modlock; assert 'site-packages' in modlock.__file__; print(modlock.__version__)"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          ./.venv/Scripts/python.exe -m pip check
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          ./.venv/Scripts/python.exe -m pytest -q
       - name: Installed CLI smoke
         run: |
           ./.venv/Scripts/modlock.exe --version

@@ -1,6 +1,6 @@
 # Señales de reproducibilidad — #11
 
-En desarrollo 0.2.0.dev0, no incluido en la prerelease 0.1.0a1. El propietario
+Disponible desde 0.2.0a1; no incluido en la prerelease 0.1.0a1. El propietario
 autorizó continuar con #11 y después los issues posibles por dependencias,
 fusiones/versiones tras controles y aviso ante prueba manual necesaria. Eso no
 convierte CONTRIBUIR en un resultado favorable ni demuestra demanda.
