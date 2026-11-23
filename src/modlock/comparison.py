@@ -1,7 +1,7 @@
 """Conservative, deterministic comparison of two normalized in-memory exports."""
 
 from dataclasses import dataclass
-from typing import Literal
+from typing import Literal, cast
 
 from modlock.identity import (
     FileReference,
@@ -9,6 +9,7 @@ from modlock.identity import (
     NormalizedRecord,
     checked_export,
 )
+from modlock.meteoric import JsonObject
 
 type Category = Literal[
     "added", "removed", "modified", "reordered", "unchanged", "ambiguous", "separator"
@@ -64,8 +65,13 @@ def _fields(
     }
     other_old = {k: v for k, v in old.raw.items() if k not in excluded}
     other_new = {k: v for k, v in new.raw.items() if k not in excluded}
-    general_old = {k: v for k, v in old.raw["general"].items() if k != "version"}
-    general_new = {k: v for k, v in new.raw["general"].items() if k != "version"}
+    # checked_export has already validated the raw object, including unknown keys.
+    general_old = {
+        k: v for k, v in cast(JsonObject, old.raw["general"]).items() if k != "version"
+    }
+    general_new = {
+        k: v for k, v in cast(JsonObject, new.raw["general"]).items() if k != "version"
+    }
     if other_old != other_new or general_old != general_new:
         fields.append("metadata")
     if moved:

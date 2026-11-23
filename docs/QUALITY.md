@@ -9,3 +9,7 @@ CI usa un runner **estándar windows-latest** en este repo público, x64/CPython
 La ejecución real sobre SHA de PR debe constar en su descripción antes de fusionar #9. No se declara PASS por existir YAML. Los resultados locales y CI se registran por separado. No requiere prueba manual de usuario; exportación desde MO2 real y matriz de ACL/symlinks continúan fuera de esta cobertura.
 
 La regresión detectó una frontera mutable: las dataclasses contienen diccionarios modificables. El motor vuelve a validar los originales decodificados en memoria con las reglas existentes del lector y recalcula la evidencia, para rechazar modelos cuyo raw y campos tipados ya no coinciden. No relee archivos ni cambia el esquema del parser. Una prueba evita que esa divergencia produzca informes silenciosamente incoherentes.
+
+## Ampliación #15
+
+Corpus completo de #2 (19 entradas, válidas/anómalas/negativas) a través de audit y ambos formatos; conserva cada índice/raw, warnings y hashes de archivos, determinismo de éxito/error y unknown de contenido/procedencia/juego. Se suma a las diez parejas del spike y snapshots Unicode/BOM/límite real. CI ejecuta Mypy 2.4.1 sobre ocho módulos con check_untyped_defs, además de pytest/Ruff/smoke. La configuración es gradual, sin prometer tipado estricto de todas las APIs dinámicas. Revisión de dependencias/avisos en DEPENDENCIES.md; migración en MIGRATION-0.2.md. El paquete extraído se instala y verifica por separado, sin editable.

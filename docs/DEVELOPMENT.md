@@ -86,3 +86,7 @@ v0.1.0a1 ya está publicada y #10 cerrado. La instrucción del 23-11-2026 autori
 - No hacer force push, rebase de ramas compartidas, ni eliminar ramas. Si la interfaz ofrece eliminar la rama tras fusionar, desactivar esa opción.
 - Usar Git y GitHub CLI estándar; no se necesita instalar una extensión Gitflow ni añadir servicios o pipelines.
 - Antes de una PR: revisar diff, pruebas relevantes, identidad Git y ausencia de secretos. Registrar resultados y bloqueos reales.
+
+## Verificación v0.2 / #15
+
+Además de pytest/Ruff/pip check: `.\.venv\Scripts\python.exe -m mypy src/modlock`. Mypy 2.4.1 y transitivas de desarrollo quedan fijadas con hashes; ver DEPENDENCIES.md. Configuración gradual sobre los ocho módulos: check_untyped_defs y warn_unused_ignores, sin ignores globales. No es certificación de corrección ni revisión estricta de todas las estructuras dinámicas del formato. Se corrigieron anotaciones de JSON ya validado y listas; no se ocultaron errores con ignore. Runtime sin cambios.

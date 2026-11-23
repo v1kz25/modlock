@@ -157,7 +157,8 @@ def checked_export(export: NormalizedExport) -> NormalizedExport:
             raise ValueError("Normalized record positions must be consecutive.")
     # Revalidate decoded originals in memory: callers can mutate nested dictionaries
     # even though the dataclasses themselves are frozen. Reuse the reader's rules.
-    parsed, warnings = [], []
+    parsed: list[MeteoricRecord] = []
+    warnings: list[ReadWarning] = []
     section = "Unsectioned"
     for index, record in enumerate(export.records):
         item = _record(record.original.raw, index, section, warnings)

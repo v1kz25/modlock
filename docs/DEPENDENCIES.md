@@ -58,3 +58,30 @@ Las declaraciones se consultaron en `https://pypi.org/pypi/<nombre>/<versión>/j
 La revisión cubre el grafo Python resuelto, sus textos de licencia y avisos incluidos identificados, más las declaraciones del bootstrap. Las licencias revisadas permiten uso local sin cuota obligatoria; conservar copyright, licencias y avisos cuando corresponda redistribuir. No se incorpora Meteoric/GPL como dependencia ni se copia código suyo.
 
 No se audita el árbol de compilación Rust/C de cada binario upstream ni se prepara redistribución de intérprete o ejecutable. Un empaquetado distribuible requeriría revisar sus componentes y avisos concretos. La selección MIT satisface la decisión pendiente de licencia propia; no cambia las licencias upstream. requirements-runtime.txt contiene solo las 13 distribuciones de runtime del mismo grafo/hashes ya revisados; requirements-dev.txt conserva las 19. No se certifican otras plataformas/familias de Python. Al cambiar dependencias, revisar de nuevo licencias y hashes y repetir instalación, tests, lint y smoke.
+
+
+## Typecheck de #15 (23-11-2026)
+
+Mypy 2.4.1 se añade solo a desarrollo porque #15 exige typecheck real. Se eligió
+la versión estable consultada en PyPI y wheels compatibles comprobadas para
+CPython 3.12/Windows x64, no se cambia el rango Python del producto. Una sola
+herramienta directa, sin extras/daemon/plugins. Runtime de modlock no cambia.
+El lock de desarrollo pasa de 19 a 24 distribuciones; runtime mantiene 13.
+
+| Distribución | Versión | Licencia/avisos inspeccionados |
+|---|---|---|
+| [mypy](https://pypi.org/project/mypy/2.4.1/) | 2.4.1 | MIT; Typeshed incluido Apache-2.0 |
+| [mypy-extensions](https://pypi.org/project/mypy-extensions/1.2.0/) | 1.2.0 | MIT |
+| [pathspec](https://pypi.org/project/pathspec/1.1.1/) | 1.1.1 | MPL-2.0, LICENSE de wheel y classifier del proveedor |
+| [librt](https://pypi.org/project/librt/0.17.0/) | 0.17.0 | MIT |
+| [ast-serialize](https://pypi.org/project/ast-serialize/0.13.1/) | 0.13.1 | MIT y crates/LICENSE MIT (Ruff crates) |
+
+Se revisaron metadata Requires-Python/Requires-Dist, compatibilidad de tags y
+SHA-256 de las cinco wheels antes de instalarlas offline en venv. typing_extensions
+ya está fijada en el grafo previo; tomli no se requiere en Python 3.12. No se
+instalaron extras psutil/lxml/orjson/setuptools ni las alternativas de Pathspec.
+No se redistribuyen herramientas de desarrollo en la wheel de modlock. Pathspec
+no se modifica ni copia; si se redistribuyera, conservar avisos y cumplir MPL-2.0
+sobre ese componente. Esto no cambia la licencia MIT del código propio.
+Typeshed/avisos permanecen dentro de las wheels upstream. No se certifica el
+árbol Rust completo de los binarios; mismo límite de revisión previo.

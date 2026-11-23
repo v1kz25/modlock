@@ -58,4 +58,6 @@ MIT, elegida expresamente por el propietario para #10: [LICENSE](LICENSE). Depen
 
 Motor interno: [comparación conservadora](docs/COMPARISON.md), con contexto explícito y referencias exactas; sin heurística por nombre ni inferencia de actualizaciones por página.
 
-Auditoría opcional en desarrollo: `compare BASE HEAD --audit` añade [señales verificables y unknown](docs/AUDIT.md), sin cambiar el informe predeterminado ni certificar contenido instalado.
+Auditoría opcional v0.2: `compare BASE HEAD --audit` añade [señales verificables y unknown](docs/AUDIT.md), sin cambiar el informe predeterminado ni certificar contenido instalado.
+
+Preparación de v0.2.0a1: [instalación y artefactos](docs/RELEASE-0.2.md), [migración desde v0.1](docs/MIGRATION-0.2.md). Conserva límites experimentales; no es un contrato estable de v1.0.

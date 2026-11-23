@@ -5,7 +5,7 @@ from dataclasses import asdict, dataclass
 from typing import Literal
 
 from modlock.identity import NormalizedExport, checked_export
-from modlock.meteoric import JsonObject
+from modlock.meteoric import JsonObject, JsonValue
 
 
 @dataclass(frozen=True)
@@ -22,7 +22,7 @@ def audit_export(export: NormalizedExport) -> JsonObject:
     game. JSON locations point into the original export; no source paths leak.
     """
     source = checked_export(export)
-    records = []
+    records: list[JsonValue] = []
     unknown: Counter[str] = Counter()
     for entry in source.records:
         row = entry.original
