@@ -1,0 +1,4 @@
+# Synthetic Unicode case.
++Café Patch
+-日本語 Optional
++Empty_separator

@@ -1,0 +1,4 @@
+# Synthetic modlock research fixture; not a user profile.
++Synthetic Alpha
+-Optional Patch
+*Foreign Placeholder

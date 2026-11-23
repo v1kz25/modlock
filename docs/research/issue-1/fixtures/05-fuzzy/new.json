@@ -1,0 +1,28 @@
+[
+  {
+    "id": null,
+    "type": "separator",
+    "separatorName": "Core",
+    "modName": "Core",
+    "displayName": "Core_separator",
+    "plugins": [],
+    "general": {},
+    "installed": {},
+    "order": 0,
+    "tags": [],
+    "active": true
+  },
+  {
+    "id": "Synthetic Texture Kits",
+    "type": "mod",
+    "separatorName": "Core",
+    "modName": "Synthetic Texture Kits",
+    "displayName": "Synthetic Texture Kits",
+    "plugins": [],
+    "general": {},
+    "installed": {},
+    "order": 1,
+    "tags": [],
+    "active": true
+  }
+]

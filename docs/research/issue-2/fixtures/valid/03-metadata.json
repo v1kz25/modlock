@@ -1,0 +1,52 @@
+[
+  {
+    "id": null,
+    "type": "separator",
+    "separatorName": "Base",
+    "modName": "Base",
+    "displayName": "[Grupo] Base_separator",
+    "plugins": [],
+    "general": {},
+    "installed": {},
+    "order": 0,
+    "tags": [
+      "Grupo"
+    ],
+    "active": true
+  },
+  {
+    "id": 91001,
+    "type": "mod",
+    "separatorName": "Base",
+    "modName": "Archivo Sintético",
+    "displayName": "[Audit] Archivo Sintético",
+    "plugins": [
+      "Sintetico.esp"
+    ],
+    "general": {
+      "modid": "91001",
+      "version": "d2026.11.22.0",
+      "newestVersion": "",
+      "category": "\"7,\"",
+      "installationFile": "Archivo-91001-1-0.zip"
+    },
+    "installed": {
+      "size": 2,
+      "files": [
+        {
+          "modid": "91001",
+          "fileid": "81001"
+        },
+        {
+          "modid": "91001",
+          "fileid": "81002"
+        }
+      ]
+    },
+    "order": 1,
+    "tags": [
+      "Audit"
+    ],
+    "active": false
+  }
+]

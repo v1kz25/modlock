@@ -1,0 +1,31 @@
+{
+  "rotation_metadata": [
+    {"category":"modified","base":0,"head":1,"fields":["active","metadata","order","version"],"reason":null},
+    {"category":"reordered","base":1,"head":2,"fields":["order"],"reason":null},
+    {"category":"reordered","base":2,"head":0,"fields":["order"],"reason":null}
+  ],
+  "uncertain_gap": [
+    {"category":"reordered","base":0,"head":2,"fields":["order"],"reason":null},
+    {"category":"ambiguous","base":1,"head":null,"fields":[],"reason":"unresolved_identity_in_other_export"},
+    {"category":"reordered","base":2,"head":0,"fields":["order"],"reason":null},
+    {"category":"ambiguous","base":null,"head":1,"fields":[],"reason":"uncertain_identity"}
+  ],
+  "duplicate": [
+    {"category":"ambiguous","base":0,"head":null,"fields":[],"reason":"unresolved_identity_in_other_export"},
+    {"category":"unchanged","base":1,"head":2,"fields":[],"reason":null},
+    {"category":"ambiguous","base":null,"head":0,"fields":[],"reason":"uncertain_identity"},
+    {"category":"ambiguous","base":null,"head":1,"fields":[],"reason":"uncertain_identity"}
+  ],
+  "file_change": [
+    {"category":"ambiguous","base":0,"head":null,"fields":[],"reason":"unresolved_page_or_reference_overlap"},
+    {"category":"ambiguous","base":null,"head":0,"fields":[],"reason":"unresolved_page_or_reference_overlap"}
+  ],
+  "insertion": [
+    {"category":"unchanged","base":0,"head":1,"fields":[],"reason":null},
+    {"category":"unchanged","base":1,"head":2,"fields":[],"reason":null},
+    {"category":"added","base":null,"head":0,"fields":[],"reason":null}
+  ],
+  "whitespace_version": [
+    {"category":"modified","base":0,"head":0,"fields":["version_metadata"],"reason":null}
+  ]
+}

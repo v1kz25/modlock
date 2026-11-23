@@ -1,0 +1,21 @@
+# Calidad y evidencia — desde #9
+
+Corpus propio y sintético: los diez pares del spike #1, los 19 archivos válidos/anómalos/inválidos del #2, golden del modelo/motor y casos de CLI/entradas hostiles. No se usan listas privadas ni archivos reales de juego. No se certifica otra versión del formato que la estructura fijada al commit Meteoric estudiado; tampoco integridad o compatibilidad de instalaciones.
+
+Comandos locales del entorno: pytest completo, Ruff check, Ruff format --check y pip check, según DEVELOPMENT.md. La regresión atraviesa CLI→lector→modelo→motor→JSON para los diez pares, conservando cada índice/dato por lado y SHA-256 de los inputs. Una prueba bloquea socket/socket.create_connection durante comparación/informe. JSON/Markdown, permisos simulados, Unicode, errores, duplicados y falsos positivos tienen pruebas específicas. No se ha elegido un typechecker adicional en #3 ni se añade ahora.
+
+CI usa un runner **estándar windows-latest** en este repo público, x64/CPython 3.12. Acciones oficiales fijadas por SHA, contents:read, sin credenciales persistidas, secretos, cachés ni upload de artefactos. Instala wheels con hashes y ejecuta suite/lint/smoke real. Solo descarga dependencias durante setup, no durante las comparaciones. No se habilita infraestructura de pago o runners grandes. [GitHub documenta que los runners estándar son gratuitos para repos públicos](https://docs.github.com/en/billing/concepts/product-billing/github-actions); si el repo fuera privado el job no se ejecuta. El runner es Windows Server de GitHub, no sustituye la prueba local de Windows 11.
+
+La ejecución real sobre SHA de PR debe constar en su descripción antes de fusionar #9. No se declara PASS por existir YAML. Los resultados locales y CI se registran por separado. No requiere prueba manual de usuario; exportación desde MO2 real y matriz de ACL/symlinks continúan fuera de esta cobertura.
+
+La regresión detectó una frontera mutable: las dataclasses contienen diccionarios modificables. El motor vuelve a validar los originales decodificados en memoria con las reglas existentes del lector y recalcula la evidencia, para rechazar modelos cuyo raw y campos tipados ya no coinciden. No relee archivos ni cambia el esquema del parser. Una prueba evita que esa divergencia produzca informes silenciosamente incoherentes.
+
+## Ampliación #15
+
+Corpus completo de #2 (19 entradas, válidas/anómalas/negativas) a través de audit y ambos formatos; conserva cada índice/raw, warnings y hashes de archivos, determinismo de éxito/error y unknown de contenido/procedencia/juego. Se suma a las diez parejas del spike y snapshots Unicode/BOM/límite real. CI ejecuta Mypy 2.4.1 sobre ocho módulos con check_untyped_defs, además de pytest/Ruff/smoke. La configuración es gradual, sin prometer tipado estricto de todas las APIs dinámicas. Revisión de dependencias/avisos en DEPENDENCIES.md; migración en MIGRATION-0.2.md. El paquete extraído se instala y verifica por separado, sin editable.
+
+Resultado local #17: Windows 11 x64 / CPython 3.12.14, **201 passed / 4 skipped** (symlinks, Windows 1314); Ruff y Mypy correctos. Los hardlinks se comprobaron desde ejecución normal fuera de la restricción del sandbox de Codex (que denegaba crearlos), sin cambiar Windows ni elevar permisos administrativos. CI exige ejecutar los cuatro casos reales; no cerrar por un PASS que los omita. Matriz y límites: [COMPATIBILITY.md](COMPATIBILITY.md).
+
+## Contrato y candidato 1.x
+
+Golden JSON completo obtenido de la wheel 0.1 publicada, compatibilidad actual con/sin audit, desconocidos y códigos del alias -o. Solo se neutralizan dos encabezados Markdown y textos de ayuda/versión, con snapshot explícito; el payload JSON heredado permanece igual. Las pruebas de distribución nativas se repiten tras instalar wheel no editable; resultados del candidato y SHA exacto en la PR #19, sin convertirlos en revisión humana.

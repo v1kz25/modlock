@@ -1,0 +1,42 @@
+[
+  {
+    "id": null,
+    "type": "separator",
+    "separatorName": "Core",
+    "modName": "Core",
+    "displayName": "Core_separator",
+    "plugins": [],
+    "general": {},
+    "installed": {},
+    "order": 0,
+    "tags": [],
+    "active": true
+  },
+  {
+    "id": 101,
+    "type": "mod",
+    "separatorName": "Core",
+    "modName": "Synthetic Alpha",
+    "displayName": "Synthetic Alpha",
+    "plugins": [],
+    "general": {
+      "modid": "101",
+      "version": "1.0.0.0",
+      "newestVersion": "1.0.0.0",
+      "category": "",
+      "installationFile": ""
+    },
+    "installed": {
+      "size": 1,
+      "files": [
+        {
+          "modid": "101",
+          "fileid": "1001"
+        }
+      ]
+    },
+    "order": 1,
+    "tags": [],
+    "active": true
+  }
+]

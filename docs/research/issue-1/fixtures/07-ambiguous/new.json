@@ -1,0 +1,45 @@
+[
+  {
+    "id": null,
+    "type": "separator",
+    "separatorName": "Core",
+    "modName": "Core",
+    "displayName": "Core_separator",
+    "plugins": [],
+    "general": {},
+    "installed": {},
+    "order": 0,
+    "tags": [],
+    "active": true
+  },
+  {
+    "id": "Local Patch",
+    "type": "mod",
+    "separatorName": "Core",
+    "modName": "Local Patch",
+    "displayName": "[B] Local Patch",
+    "plugins": [],
+    "general": {},
+    "installed": {},
+    "order": 1,
+    "tags": [
+      "B"
+    ],
+    "active": true
+  },
+  {
+    "id": "Local Patch",
+    "type": "mod",
+    "separatorName": "Core",
+    "modName": "Local Patch",
+    "displayName": "[A] Local Patch",
+    "plugins": [],
+    "general": {},
+    "installed": {},
+    "order": 2,
+    "tags": [
+      "A"
+    ],
+    "active": true
+  }
+]

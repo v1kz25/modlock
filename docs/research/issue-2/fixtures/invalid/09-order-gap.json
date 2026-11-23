@@ -1,0 +1,24 @@
+[
+  {
+    "id": "Local Defaults",
+    "type": "mod",
+    "separatorName": "Unsectioned",
+    "modName": "Local Defaults",
+    "displayName": "Local Defaults",
+    "plugins": [],
+    "general": {
+      "modid": "",
+      "version": "",
+      "newestVersion": "",
+      "category": "",
+      "installationFile": ""
+    },
+    "installed": {
+      "size": 0,
+      "files": []
+    },
+    "order": 3,
+    "tags": [],
+    "active": true
+  }
+]

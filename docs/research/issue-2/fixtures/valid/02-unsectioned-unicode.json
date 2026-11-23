@@ -1,0 +1,21 @@
+[
+  {
+    "id": "Salida local Café [Final]",
+    "type": "mod",
+    "separatorName": "Unsectioned",
+    "modName": "Salida local Café [Final]",
+    "displayName": "Salida local Café [Final]",
+    "plugins": [
+      "A.ESM",
+      "Parche.esp",
+      "z.esl"
+    ],
+    "general": {},
+    "installed": {},
+    "order": 0,
+    "tags": [
+      "Final"
+    ],
+    "active": true
+  }
+]

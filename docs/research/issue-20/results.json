@@ -1,0 +1,44 @@
+{
+  "cases": [
+    {
+      "current_cli_exit": 1,
+      "fixture": "empty.txt",
+      "sha256": "45fe8a0cdec790ca19671ebb8a763694922f3a1892cebcbbd33f82d944279e52",
+      "unchanged": true
+    },
+    {
+      "current_cli_exit": 1,
+      "fixture": "reference-a.txt",
+      "sha256": "517a2265c4bd59f742a20c76e04e5af517abe431b8f2e21f90808211f1e06406",
+      "unchanged": true
+    },
+    {
+      "current_cli_exit": 1,
+      "fixture": "reference-b.txt",
+      "sha256": "517a2265c4bd59f742a20c76e04e5af517abe431b8f2e21f90808211f1e06406",
+      "unchanged": true
+    },
+    {
+      "current_cli_exit": 1,
+      "fixture": "renamed.txt",
+      "sha256": "bd7f95d1f62efcd04f376ce58bd29cdee337bb7e3f62f797e15a13c481d4e1b2",
+      "unchanged": true
+    },
+    {
+      "current_cli_exit": 1,
+      "fixture": "reordered.txt",
+      "sha256": "0aecbc2b1c3331a3396eaa39a4c4b5b23247cd1d0bbdac6df8fadae8d6a98a07",
+      "unchanged": true
+    },
+    {
+      "current_cli_exit": 1,
+      "fixture": "unicode.txt",
+      "sha256": "db9835a532557772f1dff3a9fe05a64964d1eac78f0463e5d4ca6ed83b99474d",
+      "unchanged": true
+    }
+  ],
+  "decision": "RECHAZAR_FORMATO_AISLADO_AHORA",
+  "identical_text_distinct_synthetic_variants": true,
+  "parser_implemented": false,
+  "producer_executed": false
+}

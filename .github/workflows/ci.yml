@@ -1,0 +1,70 @@
+name: Windows checks
+on:
+  pull_request:
+    branches: [develop, main]
+  push:
+    branches: [develop, main, 'release/**']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: windows-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  checks:
+    if: github.event.repository.private == false
+    runs-on: windows-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+          architecture: x64
+      - name: Local environment and verified wheels
+        run: |
+          python -m venv .venv
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          ./.venv/Scripts/python.exe -m pip --isolated install --only-binary=:all: --require-hashes -r requirements-dev.txt
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          ./.venv/Scripts/python.exe -m pip --isolated install --no-build-isolation --no-deps -e .
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          ./.venv/Scripts/python.exe -m pip check
+      - name: Tests and lint
+        run: |
+          ./.venv/Scripts/python.exe -m pytest -q
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          ./.venv/Scripts/python.exe -m ruff check src tests
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          ./.venv/Scripts/python.exe -m ruff format --check src tests
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          ./.venv/Scripts/python.exe -m mypy src/modlock
+      - name: Noneditable wheel and full native regression
+        run: |
+          $env:SOURCE_DATE_EPOCH = '315532800'
+          New-Item -ItemType Directory -Path .venv/wheel -Force | Out-Null
+          ./.venv/Scripts/python.exe -c "from flit_core import buildapi; print(buildapi.build_wheel('.venv/wheel'))"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $wheelFiles = @(Get-ChildItem .venv/wheel/*.whl)
+          if ($wheelFiles.Count -ne 1) { throw 'Expected one project wheel' }
+          $wheelPath = $wheelFiles[0].FullName
+          ./.venv/Scripts/python.exe -m pip --isolated install --no-index --no-deps --force-reinstall $wheelPath
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          ./.venv/Scripts/python.exe -c "import modlock; assert 'site-packages' in modlock.__file__; print(modlock.__version__)"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          ./.venv/Scripts/python.exe -m pip check
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          ./.venv/Scripts/python.exe -m pytest -q
+      - name: Installed CLI smoke
+        run: |
+          ./.venv/Scripts/modlock.exe --version
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          ./.venv/Scripts/modlock.exe compare docs/research/issue-2/fixtures/valid/03-metadata.json docs/research/issue-2/fixtures/valid/03-metadata.json --context synthetic:example --output "$env:RUNNER_TEMP/report.json"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $report = Get-Content -Raw "$env:RUNNER_TEMP/report.json" | ConvertFrom-Json
+          if ($report.summary.unchanged -ne 1) { throw 'Unexpected smoke result' }
