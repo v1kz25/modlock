@@ -94,6 +94,52 @@ def render_markdown(data: dict) -> str:
             )
             + " |"
         )
+    lines.extend(["", "## Summary", "", "| Category | Count |", "|---|---:|"])
+    for category, count in sorted(data["summary"].items()):
+        lines.append(f"| {_cell(category)} | {_cell(str(count))} |")
+    if not data["summary"]:
+        lines.extend(["", "No comparison records."])
+    lines.extend(["", "## Reader warnings", ""])
+    warnings = [
+        (side, warning)
+        for side in ("base", "head")
+        for warning in data["warnings"][side]
+    ]
+    if warnings:
+        lines.extend(["| Side | Location | Code | Message |", "|---|---|---|---|"])
+        for side, warning in warnings:
+            lines.append(
+                "| "
+                + " | ".join(
+                    _cell(value)
+                    for value in (
+                        side,
+                        warning["location"],
+                        warning["code"],
+                        warning["message"],
+                    )
+                )
+                + " |"
+            )
+    else:
+        lines.append("None.")
+    if "audit" in data:
+        lines.extend(
+            [
+                "",
+                "## Reproducibility signals",
+                "",
+                "Unknown means insufficient evidence; presence is declared metadata.",
+                "",
+                "| Side | Unknown signal | Count |",
+                "|---|---|---:|",
+            ]
+        )
+        for side in ("base", "head"):
+            for signal, count in sorted(
+                data["audit"][side]["summary"]["unknown_signals"].items()
+            ):
+                lines.append(f"| {side} | {_cell(signal)} | {_cell(str(count))} |")
     lines.extend(
         ["", "## Limitations", ""] + ["- " + _cell(v) for v in data["limitations"]]
     )
