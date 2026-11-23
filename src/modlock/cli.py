@@ -19,15 +19,15 @@ app = typer.Typer(add_completion=False, pretty_exceptions_enable=False)
 
 @app.callback(
     invoke_without_command=True,
-    help="Experimental read-only comparison of local Meteoric exports.",
+    help="Read-only comparison of local Meteoric exports.",
 )
 def main(
     ctx: typer.Context,
     version: Annotated[
-        bool, typer.Option("--version", help="Show the development version and exit.")
+        bool, typer.Option("--version", help="Show the package version and exit.")
     ] = False,
 ) -> None:
-    """Display setup help when no option is supplied."""
+    """Display help when no option is supplied."""
     if version:
         typer.echo(f"modlock {__version__}")
         raise typer.Exit()
@@ -62,7 +62,7 @@ def compare(
         typer.Option("--output", "-o", help="New output file only; never overwrite."),
     ] = None,
 ) -> None:
-    """Compare BASE and HEAD read-only; emit experimental JSON or Markdown."""
+    """Compare BASE and HEAD read-only; emit JSON or Markdown reports."""
     try:
         old, new = (
             normalize_export(read_meteoric(base)),

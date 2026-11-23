@@ -1,6 +1,6 @@
 # Roadmap — modlock
 
-v0.1.0a1 experimental publicada; #1–#4 y #6–#10 completados. v0.2 se desarrolla por tareas autorizadas y dependencias. Las versiones siguientes son hipótesis condicionadas a la validación y a decisiones del propietario, no compromisos de construir todas las funciones.
+v0.1/v0.2 completadas y 0.2.0a2 publicada. Contrato 1.x y dependencias técnicas completados; #19 prepara candidato 1.0.0 con revisión humana antes del tag. Las versiones siguientes son hipótesis condicionadas a la validación y a decisiones del propietario, no compromisos de construir todas las funciones.
 
 1. **Validación técnica / PoC**: validar el hueco real y dependencias
 2. **Configuración inicial**: crear base mínima verificable
@@ -23,7 +23,7 @@ Después, el propietario decidió continuar investigando modlock como herramient
 |---|---|---|---|
 | v0.1.0 experimental | #1/#2/#3/#6/#7/#4/#8/#9 integrados: formato, lector, identidad, comparación conservadora, CLI/informes y CI. #10 completado, distribución MIT publicada | #1–#4 y #6–#10: validar diferenciación y formato, setup, lectura, identidad, diff conservador, JSON/Markdown, calidad y prerelease revisable | Autorizados #4/#8/#9/#10 y publicación experimental. Cadena #7→#4→#8→#9→#10. Salida: un formato real, incertidumbre preservada, pruebas y smoke Windows ejecutados, licencias revisadas, instalación/artefactos reproducidos; publicación solo autorizada por el propietario |
 | v0.2.0 experimental | #11–#14 integrados (PRs #31–#34); #15 completado y 0.2.0a1 publicada; #18 completado y 0.2.0a2 corregida publicada | #11–#15: señales de reproducibilidad, orden/metadatos, snapshots, informes y corpus ampliados | v0.1 validada con feedback y necesidad de cada incremento; #11 depende de #6–#10, #12 de #7/#4, #13 de #6–#8, #14 de #8, #15 de los demás v0.2. Salida: riesgos verificables con unknown, compatibilidad de informes, determinismo, corpus Windows y smoke del artefacto; segunda prerelease solo con aprobación |
-| v1.0.0 estable | #17 integrado: matriz y corrección read-only; #16 contrato definido y feedback del propietario recibido, #18 distribución completada; #19 pendiente de candidato/revisión humana. Sin versión estable | #16–#19: contrato estable de CLI/informes, exportaciones y seguridad read-only, distribución/mantenimiento, candidato estable | Feedback v0.2, matriz de formato y corpus, estrategia de distribución y todos los bloqueantes resueltos. Salida: contrato y pruebas de compatibilidad, entradas intactas y adversariales, instalación limpia, hashes reales, licencias/avisos, notas y revisión humana antes de tag/release |
+| v1.0.0 estable | #17 integrado: matriz y corrección read-only; #16 contrato definido y feedback del propietario recibido, #18 distribución completada; #19 candidato 1.0.0 en release/1.0.0 pendiente de revisión humana/tag; sin publicación estable inferida | #16–#19: contrato estable de CLI/informes, exportaciones y seguridad read-only, distribución/mantenimiento, candidato estable | Feedback v0.2, matriz de formato y corpus, estrategia de distribución y todos los bloqueantes resueltos. Salida: contrato y pruebas de compatibilidad, entradas intactas y adversariales, instalación limpia, hashes reales, licencias/avisos, notas y revisión humana antes de tag/release |
 | Posterior a v1.0, sin compromiso | Spike #20: [rechazado modlist.txt aislado por ahora](research/issue-20/REPORT.md), sin parser | #20: spike de segundo formato | Demanda, muestras y licencia comprobadas; decisión continuar/rechazar antes de cualquier parser |
 
 Evidencia: PRs fusionadas #21–#28, issues #1/#2/#3/#6/#7/#4/#8/#9 completados. #5 fue una PR documental. #10 registra construcción, instalación de artefactos y publicación.
@@ -59,8 +59,12 @@ El 23-11-2026 el propietario autorizó #11 y después todos los issues posibles,
 
 ## Cierre del spike #20
 
-La autorización amplia permite investigarlo sin esperar a v1.0, sin comprometer un adaptador. Se inspeccionó MO2 modlist.txt con fuente/licencia fijadas y dos peticiones públicas de exportación, que no prueban demanda de auditoría. Seis casos sintéticos reproducibles muestran límites de información; decisión RECHAZAR el formato aislado por ahora. No implementar parser ni enriquecerlo leyendo perfiles por suposición. #16/PR #37 sigue pendiente de feedback v0.2; #19 no puede declarar estable sin esa dependencia y revisión humana.
+La autorización amplia permite investigarlo sin esperar a v1.0, sin comprometer un adaptador. Se inspeccionó MO2 modlist.txt con fuente/licencia fijadas y dos peticiones públicas de exportación, que no prueban demanda de auditoría. Seis casos sintéticos reproducibles muestran límites de información; decisión RECHAZAR el formato aislado por ahora. No implementar parser ni enriquecerlo leyendo perfiles por suposición. En ese punto #16/PR #37 aún esperaba feedback; la sección posterior registra su recepción. #19 mantiene revisión humana del candidato antes del tag.
 
 ## Feedback #16 recibido
 
 El 23-11-2026 el propietario revisó el ejemplo v0.2 y confirmó que se entiende. Feedback limitado a presentación, no demanda ni prueba de perfiles reales. #16 fija contrato 1.x conservando IDs/JSON previos, con golden del artefacto v0.1. #19 sigue requiriendo revisión humana del candidato concreto antes de tag estable.
+
+## Preparación #19
+
+Dependencias #16/#17/#18 cerradas con evidencia; feedback #16 recibido. Se prepara 1.0.0 sin nuevos formatos, manteniendo JSON heredado, paquetes/checksums reales y revisión humana del candidato antes del tag. No confundir tests, número en pyproject o autorización general con esa revisión ni con publicación ejecutada.

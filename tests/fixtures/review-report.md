@@ -1,4 +1,4 @@
-# modlock experimental comparison
+# modlock comparison
 
 Context: synthetic:review
 
@@ -46,7 +46,7 @@ Unknown means insufficient evidence; presence is declared metadata.
 - Reference correspondence is not content integrity, FOMOD equivalence or compatibility\.
 - Changed file IDs, incomplete identities and collisions can remain unresolved\.
 
-## Complete evidence (experimental JSON)
+## Complete evidence (JSON)
 
 ```json
 {

@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.0.0
+
+Contract stabilization for the documented Meteoric input and local CLI/reports.
+Prepared for human candidate review in #19; publication/tag state is recorded
+in GitHub, not inferred from this version heading.
+
+- Public 1.x CLI/JSON contract, unknown fallbacks and deprecation policy, based
+  on owner feedback for v0.2 and golden compatibility with the published v0.1 wheel.
+- Existing JSON schema IDs/payload retained as opaque legacy identifiers;
+  optional audit unchanged. Internal APIs are outside the public contract.
+- Version/help/package wording and two Markdown headings become version neutral;
+  complete evidence unchanged. No new parser, dependency or matching heuristic.
+- Incorporates corrected dangling output handling, native filesystem matrix,
+  offline wheel/sdist verification, license inventory and maintenance guide.
+
+Scope is a stable limited interface, not certified installed content, game,
+compatibility, TOCTOU isolation, untested platforms or evidence of market demand.
+Historical CONTRIBUIR and owner decision remain distinct.
+
 ## 0.2.0a2 — 2026-11-23
 
 - Fix Windows dangling output symlinks: lstat rejects an existing final entry

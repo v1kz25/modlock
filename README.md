@@ -1,67 +1,71 @@
 # modlock
 
-> Versión **0.2.0a2 experimental**; contrato todavía inestable.
+CLI **1.0.0** para comparar exports Meteoric locales y registrar evidencia de
+reproducibilidad, conservando las ambigüedades. Contrato público de CLI/informes
+para un formato documentado; APIs internas fuera de ese contrato.
 
-El [spike del issue #1](docs/research/issue-1/REPORT.md) conserva el veredicto histórico **CONTRIBUIR**. El propietario decidió después seguir investigando modlock como auditor independiente y complementario a Meteoric. Tras integrar #7 autorizó completar **#4, #8, #9 y #10 y publicar v0.1.0 experimental**, con fusiones secuenciales y aviso si hace falta prueba manual. Es una decisión del propietario; no demuestra demanda ni valida el backlog. Las versiones propuestas siguen condicionadas a decisiones posteriores.
+## Uso
 
-Auditoría read-only de modlists: diferencias semánticas y riesgos de reproducibilidad.
-
-## Objetivo
-
-Comparar exportaciones existentes de listas de mods, preservando incertidumbre en coincidencias y generando reportes reproducibles.
-
-## Disponible ahora
-
-CLI experimental de comparación read-only: [uso, contexto y límites](docs/CLI.md). JSON y Markdown deterministas, sin sobrescribir archivos existentes. Base comprobada: CPython 3.12 / Windows 11 x64.
+[Instalación y verificación de paquetes](docs/RELEASE-1.0.md) en venv local,
+CPython >=3.12,<3.13 / Windows x64. [Versiones publicadas](https://github.com/v1kz25/modlock/releases).
+No instalar globalmente ni cambiar Windows. No es un ejecutable autónomo.
 
 ```powershell
 & .\.venv\Scripts\modlock.exe --help
-& .\.venv\Scripts\modlock.exe compare BASE.json HEAD.json --context JUEGO:LINAJE
+& .\.venv\Scripts\modlock.exe --version
+& .\.venv\Scripts\modlock.exe compare BASE.json HEAD.json --context JUEGO:LINAJE --audit --format markdown --output NUEVO.md
 ```
 
-Solo declarar contexto cuando ambos exports comparten juego y linaje conocidos; sin contexto los mods quedan ambiguos. IDs de archivo cambiados no se emparejan por suponer actualización. APIs internas: lector Meteoric, modelo de identidad y motor conservador. No se verifica contenido instalado, hashes o compatibilidad. Instalación: [DEVELOPMENT.md](docs/DEVELOPMENT.md); licencias/dependencias: [DEPENDENCIES.md](docs/DEPENDENCIES.md).
+Solo declarar contexto si se conoce mismo juego Y linaje de exportación; no es
+verificación del juego. Sin contexto, los mods permanecen ambiguos. `--audit`
+añade señales present/unknown y es opcional. JSON es el formato predeterminado;
+Markdown conserva toda la evidencia. Sin --output se usa stdout; con destino,
+se crea un archivo nuevo y se rechaza una entrada final existente, incluido un
+symlink roto. No se ofrecen garantías contra sustituciones concurrentes.
 
-## MVP previsto
+Código 0: operación correcta, incluso diferencias/unknown; 1: error de
+entrada/salida/contexto; 2: uso inválido. [CLI](docs/CLI.md), [contrato 1.x](docs/PUBLIC-CONTRACT.md)
+y [migración v0.1/v0.2](docs/MIGRATION-0.2.md).
 
-- importar inicialmente un único formato existente y documentado, preferentemente export MO2/Meteoric
-- validación del esquema y normalización interna
-- clasificar añadidos, eliminados, actualizados, reordenados y ambiguos
-- reportes JSON/Markdown deterministas y riesgos de reproducibilidad
+## Alcance comprobado
 
-### Fuera del MVP
+Un [formato Meteoric JSON fijado](docs/formats/meteoric-json-v1.md), validación y
+metadata original conservada, [identidad incierta](docs/IDENTITY.md),
+[comparación conservadora](docs/COMPARISON.md), [señales de auditoría](docs/AUDIT.md)
+y [exports guardados como snapshots](docs/SNAPSHOTS.md). Referencias exactas
+localmente únicas y contexto conocido permiten correspondencias; cambiar fileid
+no se supone actualización. Versiones/orden son metadata declarada.
 
-- instalar o descargar mods
-- autenticación Nexus
-- resolver conflictos automáticamente
-- diseñar estándar universal de modlists
-- GUI en el MVP
+No se comprueba contenido instalado, hashes, FOMOD, orden de carga o compatibilidad.
+No hay instalación/descarga de mods, fuzzy, autenticación, restauración de
+perfiles ni segundo parser. Content_hash/game/provenance siguen unknown.
+Un informe raw puede contener datos privados del export: mantenerlo local y
+revisarlo antes de compartir. La herramienta no transmite datos.
 
-## Desarrollo
+[Compatibilidad y límites Windows](docs/COMPATIBILITY.md): Windows 11 x64 /
+CPython 3.12.14 local; Windows Server / 3.12.10 en CI con enlaces reales.
+No se certifican otras plataformas ni symlinks Windows 11 omitidos por falta de
+privilegio. Los IDs JSON heredados con texto experimental se conservan como
+cadenas opacas para compatibilidad; no detectan versión/productor de entrada.
 
-- Ver [roadmap](docs/ROADMAP.md), [guía de desarrollo](docs/DEVELOPMENT.md) y [AGENTS.md](AGENTS.md).
-- El punto de entrada son los GitHub Issues, no implementar el MVP de golpe.
-- Desarrollo principalmente desde Windows 11; sin infraestructura de pago.
+## Desarrollo y procedencia
 
-## Riesgos
+[DEVELOPMENT.md](docs/DEVELOPMENT.md), [calidad](docs/QUALITY.md),
+[mantenimiento](docs/SUPPORT.md), [roadmap](docs/ROADMAP.md) y [AGENTS.md](AGENTS.md).
+Entornos y ejecución locales, dependencias fijadas con hashes, tests/Ruff/Mypy,
+CI estándar gratuito en repo público. Coste adicional obligatorio **0 €**.
 
-Los algoritmos de identificación fuzzy pueden confundir mods; ecosistemas y formatos cambian; licencias GPL de herramientas de terceros.
-
-## Referencias
-
-- https://github.com/imightbemeteor/meteoric-modlist-tools
-- https://github.com/ModOrganizer2/modorganizer
-- https://github.com/wabbajack-tools/wabbajack
+El [spike #1](docs/research/issue-1/REPORT.md) conserva **CONTRIBUIR** a Meteoric.
+El propietario decidió después continuar como herramienta independiente y
+complementaria y autorizó trabajo/publicaciones incrementales. Esto no demuestra
+demanda ni justifica todo el backlog. [#20](docs/research/issue-20/REPORT.md)
+rechaza por ahora el segundo formato aislado investigado. La publicación estable
+se rige por la revisión del candidato exigida en #19; un número de versión en
+fuente no significa por sí solo que exista su tag/release.
 
 ## Licencia
 
-MIT, elegida expresamente por el propietario para #10: [LICENSE](LICENSE). Dependencias y avisos: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Instalación del paquete y verificación de artefactos: [RELEASE.md](docs/RELEASE.md). No se redistribuyen intérprete ni dependencias dentro de la wheel.
-
-Motor interno: [comparación conservadora](docs/COMPARISON.md), con contexto explícito y referencias exactas; sin heurística por nombre ni inferencia de actualizaciones por página.
-
-Auditoría opcional v0.2: `compare BASE HEAD --audit` añade [señales verificables y unknown](docs/AUDIT.md), sin cambiar el informe predeterminado ni certificar contenido instalado.
-
-Preparación de v0.2.0a1: [instalación y artefactos](docs/RELEASE-0.2.md), [migración desde v0.1](docs/MIGRATION-0.2.md). Conserva límites experimentales; no es un contrato estable de v1.0.
-
-Distribución y mantenimiento local: [SUPPORT.md](docs/SUPPORT.md). 0.2.0a2 incorpora la corrección de salida symlink rota demostrada en #17; consultar notas y límites de filesystem.
-
-Contrato de CLI/informes para la línea 1.x: [PUBLIC-CONTRACT.md](docs/PUBLIC-CONTRACT.md), con identificadores JSON heredados conservados. No anuncia una versión estable publicada; #19 requiere revisión del candidato.
+[MIT](LICENSE), elegida expresamente por el propietario. [Inventario de dependencias](docs/DEPENDENCIES.md)
+y [avisos de terceros](THIRD_PARTY_NOTICES.md). Wheel propia sin intérprete ni
+código/dependencias upstream empaquetados; sus distribuciones conservan avisos.
+No se incorpora implementación GPL de Meteoric/MO2.

@@ -65,7 +65,7 @@ def _cell(value: str) -> str:
 
 def render_markdown(data: dict) -> str:
     lines = [
-        "# modlock experimental comparison",
+        "# modlock comparison",
         "",
         f"Context: {_cell(data['context'] or 'unconfirmed')}",
         "",
@@ -152,7 +152,7 @@ def render_markdown(data: dict) -> str:
     lines.extend(
         [
             "",
-            "## Complete evidence (experimental JSON)",
+            "## Complete evidence (JSON)",
             "",
             fence + "json",
             payload.rstrip("\n"),

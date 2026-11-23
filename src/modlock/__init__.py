@@ -1,3 +1,3 @@
-"""Experimental read-only comparison of Meteoric modlist exports."""
+"""Read-only comparison and evidence audit of Meteoric modlist exports."""
 
-__version__ = "0.2.0a2"
+__version__ = "1.0.0"

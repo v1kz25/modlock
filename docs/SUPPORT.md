@@ -19,12 +19,13 @@ de concurrencia documentado, sin afirmar un sandbox de filesystem. Las releases
 0.1.0a1/0.2.0a1 conservan sus bytes/hashes y nota del límite; se recomienda a2
 para la política de no crear targets de enlaces de salida ya existentes.
 
-Esta comprobación prepara calidad de distribución de v1.0 pero **no publica
-estable**: #16 sigue pendiente de feedback; #19 exige revisión humana.
+La distribución 1.x mantiene esta estrategia. #16 tiene feedback y contrato
+registrados; #19 exige revisar el candidato concreto antes de tag. La existencia
+de paquetes locales no acredita una publicación: consultar la PR/release.
 
 ## Instalar y verificar sin cambios globales
 
-Seguir [RELEASE-0.2.md](RELEASE-0.2.md): comprobar todos los hashes, venv nuevo,
+Seguir [RELEASE-1.0.md](RELEASE-1.0.md): comprobar todos los hashes, venv nuevo,
 lock runtime de 13 wheels, instalación no editable y pip check. Ejecutar ayuda,
 versión, comparación de ejemplo JSON/Markdown/audit y errores 0/1/2. Descargar
 dependencias una vez desde PyPI; la comparación funciona offline. No activar
