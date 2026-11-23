@@ -1,4 +1,4 @@
-# Third-party notices — modlock 0.2.0a1
+# Third-party notices — modlock 0.2.0a2
 
 modlock's own code and documentation are MIT licensed; see LICENSE. The owner
 expressly selected MIT for issue #10 on 2026-11-22.

@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.2.0a2 — 2026-11-23
+
+- Fix Windows dangling output symlinks: lstat rejects an existing final entry
+  before exclusive creation. A real Windows CI regression caught creation of
+  the absent target with open(x) in earlier prereleases. Those releases retain
+  their bytes and a known-issue note; this does not claim TOCTOU isolation.
+- Native filesystem/format matrix: real CI symlinks (no skips), hardlinks,
+  read-only attribute and explicit-input-only access. Windows 11 cannot create
+  file symlinks here (1314); those four local cases remain explicitly skipped.
+- Distribution checks for complete wheel content, metadata, entrypoint, own
+  license notices, exact runtime dependency closure and offline repeatable build.
+- Windows support/maintenance guide; no new runtime/development dependencies.
+
+Still experimental. #16 needs v0.2 feedback and #19 human review before stable.
+
 ## 0.2.0a1 — 2026-11-23
 
 - Optional --audit records present/unknown reproducibility signals per mod/side;

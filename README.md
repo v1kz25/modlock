@@ -1,6 +1,6 @@
 # modlock
 
-> Publicada **0.1.0a1 experimental**; desarrollo de v0.2 por issues, contrato todavía inestable.
+> Versión **0.2.0a2 experimental**; contrato todavía inestable.
 
 El [spike del issue #1](docs/research/issue-1/REPORT.md) conserva el veredicto histórico **CONTRIBUIR**. El propietario decidió después seguir investigando modlock como auditor independiente y complementario a Meteoric. Tras integrar #7 autorizó completar **#4, #8, #9 y #10 y publicar v0.1.0 experimental**, con fusiones secuenciales y aviso si hace falta prueba manual. Es una decisión del propietario; no demuestra demanda ni valida el backlog. Las versiones propuestas siguen condicionadas a decisiones posteriores.
 
@@ -61,3 +61,5 @@ Motor interno: [comparación conservadora](docs/COMPARISON.md), con contexto exp
 Auditoría opcional v0.2: `compare BASE HEAD --audit` añade [señales verificables y unknown](docs/AUDIT.md), sin cambiar el informe predeterminado ni certificar contenido instalado.
 
 Preparación de v0.2.0a1: [instalación y artefactos](docs/RELEASE-0.2.md), [migración desde v0.1](docs/MIGRATION-0.2.md). Conserva límites experimentales; no es un contrato estable de v1.0.
+
+Distribución y mantenimiento local: [SUPPORT.md](docs/SUPPORT.md). 0.2.0a2 incorpora la corrección de salida symlink rota demostrada en #17; consultar notas y límites de filesystem.
