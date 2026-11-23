@@ -5,7 +5,7 @@ build-backend = "flit_core.buildapi"
 [project]
 name = "modlock"
 dynamic = ["version"]
-description = "Experimental local read-only comparison of Meteoric modlist exports."
+description = "Local read-only comparison and evidence audit of Meteoric modlist exports."
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 license = "MIT"

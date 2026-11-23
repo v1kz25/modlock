@@ -5,8 +5,8 @@
 0.2.0a2 experimental publicada, con auditoría opt-in, CLI/informes, matriz y
 corrección Windows. #11–#15/#17/#18/#20 completados; #20 rechaza por ahora el
 formato aislado investigado, no implementa un parser. [Contrato público](PUBLIC-CONTRACT.md)
-preparado en #16 con feedback del propietario recibido el 23-11-2026. #19 debe
-preparar el candidato y registrar revisión humana antes de tag estable.
+preparado en #16 con feedback del propietario recibido el 23-11-2026. #19 prepara 1.0.0 en release/1.0.0; debe registrar revisión humana del candidato
+concreto antes de tag estable. Guía de distribución: RELEASE-1.0.md.
 
 La autorización vigente permite continuar/fusionar/publicar tras controles,
 con aviso ante prueba manual necesaria. CONTRIBUIR histórico y límites de
@@ -16,7 +16,7 @@ histórica explícita; verificaciones actuales en PRs y [SUPPORT.md](SUPPORT.md)
 ## Entorno comprobado y elección de versiones
 
 - Windows 11 x64 (ensayado en 10.0.26300.0); Git y GitHub CLI (`gh`).
-- Perfil experimental admitido: **CPython >=3.12,<3.13**. Se limita a una familia comprobada, sin prometer compatibilidad con otras familias/plataformas. Python 3.12 sigue en soporte de seguridad hasta octubre de 2028 según la [guía oficial](https://devguide.python.org/versions/); la [documentación de Windows](https://docs.python.org/3.12/using/windows.html) incluye plataformas posteriores a Windows 8.1.
+- Perfil admitido: **CPython >=3.12,<3.13**. Se limita a una familia comprobada, sin prometer compatibilidad con otras familias/plataformas. Python 3.12 sigue en soporte de seguridad hasta octubre de 2028 según la [guía oficial](https://devguide.python.org/versions/); la [documentación de Windows](https://docs.python.org/3.12/using/windows.html) incluye plataformas posteriores a Windows 8.1.
 - La selección se contrastó con requisitos de dependencias y wheels Windows, instalación aislada y tests; no se dedujo simplemente del spike. El intérprete disponible usado fue **3.12.14**, que no se impone como parche mínimo ni se presenta como el más reciente. Usar un parche de seguridad mantenido de la familia; no se han probado todos los parches. Ampliar el rango requiere otra verificación.
 - Typer 0.29.2 (runtime), pytest 9.2.0 (pruebas), Ruff 0.17.6 (lint/formato) y flit_core 4.2.0 (backend de instalación sin dependencias externas). Son versiones estables consultadas en PyPI y comprobadas en este entorno; no una selección anticipada para una release.
 - [requirements-dev.txt](../requirements-dev.txt) fija también las dependencias transitivas y hashes de las wheels ensayadas para CPython 3.12/Windows x64. No es un lock multiplataforma. [DEPENDENCIES.md](DEPENDENCIES.md) registra necesidad, licencias y componentes incluidos.

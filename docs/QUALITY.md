@@ -1,4 +1,4 @@
-# Calidad experimental #9
+# Calidad y evidencia — desde #9
 
 Corpus propio y sintético: los diez pares del spike #1, los 19 archivos válidos/anómalos/inválidos del #2, golden del modelo/motor y casos de CLI/entradas hostiles. No se usan listas privadas ni archivos reales de juego. No se certifica otra versión del formato que la estructura fijada al commit Meteoric estudiado; tampoco integridad o compatibilidad de instalaciones.
 
@@ -15,3 +15,7 @@ La regresión detectó una frontera mutable: las dataclasses contienen diccionar
 Corpus completo de #2 (19 entradas, válidas/anómalas/negativas) a través de audit y ambos formatos; conserva cada índice/raw, warnings y hashes de archivos, determinismo de éxito/error y unknown de contenido/procedencia/juego. Se suma a las diez parejas del spike y snapshots Unicode/BOM/límite real. CI ejecuta Mypy 2.4.1 sobre ocho módulos con check_untyped_defs, además de pytest/Ruff/smoke. La configuración es gradual, sin prometer tipado estricto de todas las APIs dinámicas. Revisión de dependencias/avisos en DEPENDENCIES.md; migración en MIGRATION-0.2.md. El paquete extraído se instala y verifica por separado, sin editable.
 
 Resultado local #17: Windows 11 x64 / CPython 3.12.14, **201 passed / 4 skipped** (symlinks, Windows 1314); Ruff y Mypy correctos. Los hardlinks se comprobaron desde ejecución normal fuera de la restricción del sandbox de Codex (que denegaba crearlos), sin cambiar Windows ni elevar permisos administrativos. CI exige ejecutar los cuatro casos reales; no cerrar por un PASS que los omita. Matriz y límites: [COMPATIBILITY.md](COMPATIBILITY.md).
+
+## Contrato y candidato 1.x
+
+Golden JSON completo obtenido de la wheel 0.1 publicada, compatibilidad actual con/sin audit, desconocidos y códigos del alias -o. Solo se neutralizan dos encabezados Markdown y textos de ayuda/versión, con snapshot explícito; el payload JSON heredado permanece igual. Las pruebas de distribución nativas se repiten tras instalar wheel no editable; resultados del candidato y SHA exacto en la PR #19, sin convertirlos en revisión humana.
