@@ -178,3 +178,75 @@ def test_independent_golden_and_pure_detached_result(
     assert view == expected
     a.records[0].original.general["version"] = "mutated"
     assert result.changes[0].base.original.general["version"] == "1"
+
+
+@pytest.mark.parametrize(
+    "case",
+    [
+        "rotation_metadata",
+        "uncertain_gap",
+        "duplicate",
+        "file_change",
+        "insertion",
+        "whitespace_version",
+    ],
+)
+def test_extended_independent_golden(tmp_path: Path, case: str) -> None:
+    a, b, c = mod(1, "A"), mod(2, "B"), mod(3, "C")
+    old, new = [a, b], deepcopy([a, b])
+    if case == "rotation_metadata":
+        old, new = [a, b, c], deepcopy([c, a, b])
+        new[1]["active"] = False
+        new[1]["general"]["version"] = "2"
+        new[1]["future"] = {"custom": "preserved"}
+    elif case == "uncertain_gap":
+        local = mod(4, "Local")
+        local.update(id="Local", installed={}, general={})
+        old, new = [a, b, c], deepcopy([c, local, a])
+    elif case == "duplicate":
+        duplicate = deepcopy(a)
+        duplicate.update(modName="Other name", displayName="Other name")
+        new = deepcopy([a, duplicate, b])
+    elif case == "file_change":
+        old, new = [a], deepcopy([a])
+        new[0]["installed"]["files"][0]["fileid"] = "11"
+    elif case == "insertion":
+        new = deepcopy([c, a, b])
+    else:
+        old, new = [a], deepcopy([a])
+        old[0]["general"]["version"] = " \t"
+    result = compare(tmp_path, old, new)
+    view = [
+        {
+            "category": item.category,
+            "base": item.base.original.index if item.base else None,
+            "head": item.head.original.index if item.head else None,
+            "fields": list(item.fields),
+            "reason": item.reason,
+        }
+        for item in result.changes
+    ]
+    expected = json.loads(
+        (
+            Path(__file__).parent / "fixtures/comparison-extended.expected.json"
+        ).read_text(encoding="utf-8")
+    )
+    assert view == expected[case]
+    assert sorted(c.base.original.index for c in result.changes if c.base) == list(
+        range(len(old))
+    )
+    assert sorted(c.head.original.index for c in result.changes if c.head) == list(
+        range(len(new))
+    )
+
+
+def test_plugin_tags_and_newest_version_do_not_claim_load_conflicts(
+    tmp_path: Path,
+) -> None:
+    old, new = mod(1, "A"), mod(1, "A")
+    new["plugins"] = ["one.esp"]
+    new["tags"] = ["optional"]
+    new["general"]["newestVersion"] = "99"
+    result = compare(tmp_path, [old], [new])
+    assert result.changes[0].fields == ("metadata", "plugins", "tags")
+    assert result.changes[0].reason is None
