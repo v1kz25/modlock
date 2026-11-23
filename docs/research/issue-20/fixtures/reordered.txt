@@ -1,0 +1,4 @@
+# Synthetic order case.
+-Optional Patch
++Synthetic Alpha
+*Foreign Placeholder

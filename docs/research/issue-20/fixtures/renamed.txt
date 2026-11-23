@@ -1,0 +1,4 @@
+# Synthetic rename case.
++Synthetic Renamed
+-Optional Patch
+*Foreign Placeholder

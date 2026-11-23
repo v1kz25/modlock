@@ -1,0 +1,21 @@
+{
+  "purpose": "Research-only external scenarios, not a supported export format or real installed mods.",
+  "a": {
+    "fixture": "reference-a.txt",
+    "game": "synthetic:same-game",
+    "lineage": "synthetic:same-lineage",
+    "page_id": 101,
+    "file_id": 1001,
+    "version": "1",
+    "variant": "choice-A"
+  },
+  "b": {
+    "fixture": "reference-b.txt",
+    "game": "synthetic:same-game",
+    "lineage": "synthetic:same-lineage",
+    "page_id": 101,
+    "file_id": 1002,
+    "version": "2",
+    "variant": "choice-B"
+  }
+}
