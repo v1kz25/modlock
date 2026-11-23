@@ -79,6 +79,14 @@ def compare(
             sys.stdout.buffer.write(text.encode("utf-8"))
             sys.stdout.flush()
         else:
+            # Windows exclusive open can follow an existing dangling symlink and
+            # create its target. Inspect the directory entry without following it.
+            try:
+                output.lstat()
+            except FileNotFoundError:
+                pass
+            else:
+                raise FileExistsError
             with output.open("x", encoding="utf-8", newline="\n") as stream:
                 stream.write(text)
     except FileExistsError:

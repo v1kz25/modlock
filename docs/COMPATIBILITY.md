@@ -51,3 +51,20 @@ integridad de instalación, juego, plugins, FOMOD, orden de carga ni compatibili
 Los informes preservan raw y pueden contener metadata privada proporcionada por
 el usuario: mantenerlos locales. Es seguridad operacional acotada, no auditoría
 de seguridad exhaustiva ni validación de demanda. CONTRIBUIR permanece histórico.
+
+
+## Fallo real y corrección #17
+
+CI 45236084982 sobre d6f5400381274c131657208223b7c1ee6488b6e0 ejecutó todos los
+symlinks: 204 tests pasaron y falló el destino de symlink roto. En Windows,
+open(x) siguió ese enlace ya existente y creó su target: el CLI devolvió 0.
+No era un fallo de la expectativa; contradice la política de salida nueva.
+La corrección consulta lstat (entrada sin seguir enlace) y rechaza cualquier
+entrada final existente antes de open(x). Se mantiene creación exclusiva para
+colisiones ordinarias; no se promete aislamiento de sustituciones concurrentes
+entre comprobación y apertura. Los cuatro casos reales deben pasar en nuevo CI.
+
+Afecta a 0.1.0a1 y 0.2.0a1 en Windows con salida symlink rota; hasta instalar la
+corrección, usar únicamente destinos nuevos que no sean enlaces. El fallo crea
+el target ausente; no se ha observado modificación de las entradas. No se cambia
+la semántica del parser/audit ni se necesita un nuevo formato o dependencia.
