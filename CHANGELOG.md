@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.2.0a1 — 2026-11-23
+
+- Optional --audit records present/unknown reproducibility signals per mod/side;
+  no fabricated content hashes, provenance or game verification.
+- More semantic golden cases; whitespace versions remain version_metadata.
+- Saved exports verified as snapshots, including inverse comparisons, Unicode,
+  BOM, bounded input and unchanged original files.
+- Markdown category counts, reader warnings and optional unknown summaries;
+  complete JSON evidence retained. Default JSON schema/fields stay compatible.
+- Full format corpus through optional audit in JSON/Markdown, Windows CI,
+  gradual Mypy typecheck and verified source/wheel distributions.
+
+Still experimental: no installed-content audit, conflict detection, guaranteed
+reproducibility or stable public contract. Migration: docs/MIGRATION-0.2.md.
+
 ## 0.1.0a1 — 2026-11-22
 
 First experimental prerelease, tested on Windows 11 x64 / CPython 3.12.14.

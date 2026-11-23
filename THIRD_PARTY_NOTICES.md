@@ -1,4 +1,4 @@
-# Third-party notices — modlock 0.1.0a1
+# Third-party notices — modlock 0.2.0a1
 
 modlock's own code and documentation are MIT licensed; see LICENSE. The owner
 expressly selected MIT for issue #10 on 2026-11-22.
@@ -31,3 +31,8 @@ See docs/DEPENDENCIES.md in the source distribution/repository for the complete
 versioned inventory, primary links, bootstrap notices and review limitations.
 No upstream GPL implementation has been copied into this package. This review
 does not audit all Rust/C source used to build upstream binary wheels.
+
+Typecheck added in #15: Mypy 2.4.1 (MIT, bundled Typeshed Apache-2.0),
+mypy-extensions 1.2.0 (MIT), Pathspec 1.1.1 (MPL-2.0), librt 0.17.0 (MIT),
+ast-serialize 0.13.1 (MIT, Ruff crates MIT). Development only, unmodified and
+not bundled in the modlock wheel; upstream distributions retain their notices.
