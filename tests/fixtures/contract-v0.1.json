@@ -1,0 +1,166 @@
+{
+  "changes": [
+    {
+      "base": {
+        "data": {
+          "active": true,
+          "displayName": "Core_separator",
+          "general": {},
+          "id": null,
+          "installed": {},
+          "modName": "Core",
+          "order": 0,
+          "plugins": [],
+          "separatorName": "Core",
+          "tags": [],
+          "type": "separator"
+        },
+        "identity": {
+          "conflicting_indices": [],
+          "reasons": [],
+          "references": [],
+          "state": "not_applicable"
+        },
+        "index": 0
+      },
+      "category": "separator",
+      "fields": [],
+      "head": null,
+      "reason": null
+    },
+    {
+      "base": {
+        "data": {
+          "active": true,
+          "displayName": "Synthetic Alpha",
+          "general": {
+            "category": "",
+            "installationFile": "",
+            "modid": "101",
+            "newestVersion": "1.0.0.0",
+            "version": "1.0.0.0"
+          },
+          "id": 101,
+          "installed": {
+            "files": [
+              {
+                "fileid": "1001",
+                "modid": "101"
+              }
+            ],
+            "size": 1
+          },
+          "modName": "Synthetic Alpha",
+          "order": 1,
+          "plugins": [],
+          "separatorName": "Core",
+          "tags": [],
+          "type": "mod"
+        },
+        "identity": {
+          "conflicting_indices": [],
+          "reasons": [],
+          "references": [
+            {
+              "file_id": 1001,
+              "page_id": 101
+            }
+          ],
+          "state": "referenced"
+        },
+        "index": 1
+      },
+      "category": "modified",
+      "fields": [
+        "active",
+        "version"
+      ],
+      "head": {
+        "data": {
+          "active": false,
+          "displayName": "Synthetic Alpha",
+          "general": {
+            "category": "",
+            "installationFile": "",
+            "modid": "101",
+            "newestVersion": "1.0.0.0",
+            "version": "2.0.0.0"
+          },
+          "id": 101,
+          "installed": {
+            "files": [
+              {
+                "fileid": "1001",
+                "modid": "101"
+              }
+            ],
+            "size": 1
+          },
+          "modName": "Synthetic Alpha",
+          "order": 1,
+          "plugins": [],
+          "separatorName": "Core",
+          "tags": [],
+          "type": "mod"
+        },
+        "identity": {
+          "conflicting_indices": [],
+          "reasons": [],
+          "references": [
+            {
+              "file_id": 1001,
+              "page_id": 101
+            }
+          ],
+          "state": "referenced"
+        },
+        "index": 1
+      },
+      "reason": null
+    },
+    {
+      "base": null,
+      "category": "separator",
+      "fields": [],
+      "head": {
+        "data": {
+          "active": true,
+          "displayName": "Core_separator",
+          "general": {},
+          "id": null,
+          "installed": {},
+          "modName": "Core",
+          "order": 0,
+          "plugins": [],
+          "separatorName": "Core",
+          "tags": [],
+          "type": "separator"
+        },
+        "identity": {
+          "conflicting_indices": [],
+          "reasons": [],
+          "references": [],
+          "state": "not_applicable"
+        },
+        "index": 0
+      },
+      "reason": null
+    }
+  ],
+  "context": "synthetic:contract",
+  "limitations": [
+    "Experimental Meteoric JSON 1.0 structure; producer/version not authenticated.",
+    "Context is a caller assertion of same game and export lineage, not verification.",
+    "Reference correspondence is not content integrity, FOMOD equivalence or compatibility.",
+    "Changed file IDs, incomplete identities and collisions can remain unresolved."
+  ],
+  "schema": "modlock-0.1-experimental",
+  "summary": {
+    "modified": 1,
+    "separator": 2
+  },
+  "warnings": {
+    "base": [],
+    "head": []
+  }
+}
