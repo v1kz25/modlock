@@ -63,3 +63,5 @@ Auditoría opcional v0.2: `compare BASE HEAD --audit` añade [señales verificab
 Preparación de v0.2.0a1: [instalación y artefactos](docs/RELEASE-0.2.md), [migración desde v0.1](docs/MIGRATION-0.2.md). Conserva límites experimentales; no es un contrato estable de v1.0.
 
 Distribución y mantenimiento local: [SUPPORT.md](docs/SUPPORT.md). 0.2.0a2 incorpora la corrección de salida symlink rota demostrada en #17; consultar notas y límites de filesystem.
+
+Contrato de CLI/informes para la línea 1.x: [PUBLIC-CONTRACT.md](docs/PUBLIC-CONTRACT.md), con identificadores JSON heredados conservados. No anuncia una versión estable publicada; #19 requiere revisión del candidato.
